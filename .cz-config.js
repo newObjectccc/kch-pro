@@ -18,16 +18,18 @@ module.exports = {
 
   // scope 类型（定义之后，可通过上下键选择）
   scopes: [
-    ['kch-backend', '后端相关'],
-    ['kch-miniapp', '小程序或H5相关'],
-    ['kch-saas', '后台saas相关'],
-    ['components', '公共组件相关调整'],
-    ['hooks', '公共hook相关调整'],
-    ['utils', '公共utils相关调整'],
-    ['middleware', '公共中间件相关调整'],
-    ['styles', '纯样式相关调整'],
-    ['deps', '项目依赖调整'],
-    ['env', '全局环境变量调整'],
+    ['kch-backend', '后端开发相关'],
+    ['kch-miniapp', '小程序或H5开发相关'],
+    ['kch-saas', '后台saas开发相关'],
+    ['components', '公共组件相关'],
+    ['hooks', '公共hook相关'],
+    ['utils', '公共utils相关'],
+    ['middleware', '公共中间件相关'],
+    ['styles', '纯样式相关'],
+    ['deps', '项目依赖相关'],
+    ['env', '全局环境变量相关'],
+    ['monorepo', 'mono仓库配置相关'],
+    ['project', '工程化,规范化相关'],
     ['other', '其他修改'],
     // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true 效果一样
     ['custom', '以上都不是']
