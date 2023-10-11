@@ -54,7 +54,7 @@
 
 > 请一律使用 github 开源社区遵循的 pull request 工作流进行所有代码开发工作，并且我们推荐使用ssh协议~
 
-1. fork 本仓库到自己的 github
+1. fork 本仓库到自己的 github (顶部右上角的那个 fork 按钮，不用修改直接创建即可)
 2. clone 自己的 fork 后的仓库到本地仓库进行开发工作
 3. 我们建议你在本地仓库设置 upstream 和 origin 2个远程仓库地址
 
