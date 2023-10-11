@@ -56,7 +56,7 @@
 
 1. fork 本仓库到自己的 github
 2. clone 自己的 fork 后的仓库到本地仓库进行开发工作
-3. 可以在本地仓库设置 upstream 和 origin 2个远程仓库地址
+3. 我们建议你在本地仓库设置 upstream 和 origin 2个远程仓库地址
 
 ```bash
 # 查看本地仓库设置的远程仓库
