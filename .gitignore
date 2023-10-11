@@ -39,3 +39,10 @@ coverage
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# miniapp
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
