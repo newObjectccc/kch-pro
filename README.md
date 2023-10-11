@@ -64,7 +64,7 @@ git remote -v
 # 设置 origin 为 fork 到自己的 github 的仓库
 git remote add origin <你自己的github仓库地址>
 # 设置 upstream 为上游目标仓库（即本仓库）
-git remote add origin git@github.com:newObjectccc/kch-pro.git
+git remote add upstream git@github.com:newObjectccc/kch-pro.git
 ```
 
 4. commit 之后，push 代码到 origin
