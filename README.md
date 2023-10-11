@@ -20,6 +20,8 @@
   pnpm -w install
 ```
 
+### git commit 请统一使用 pnpm commit
+
 **
 本 monorepo 主要是为了统一使用 prettier，commitlint，eslint，husky，git，lint-staged，tsconfig 等
 **
