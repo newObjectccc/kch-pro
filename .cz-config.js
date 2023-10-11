@@ -30,9 +30,9 @@ module.exports = {
     ['env', '全局环境变量相关'],
     ['monorepo', 'mono仓库配置相关'],
     ['project', '工程化,规范化相关'],
-    ['other', '其他修改'],
+    ['other', '其他修改']
     // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true 效果一样
-    ['custom', '以上都不是']
+    // ['custom', '以上都不是']
   ].map(([value, description]) => {
     return {
       value,
@@ -41,7 +41,7 @@ module.exports = {
   }),
 
   // 是否允许自定义填写 scope，在 scope 选择的时候，会有 empty 和 custom 可以选择。
-  // allowCustomScopes: true,
+  allowCustomScopes: true,
 
   // allowTicketNumber: false,
   // isTicketNumberRequired: false,
