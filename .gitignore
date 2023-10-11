@@ -40,7 +40,9 @@ coverage
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# miniapp
+# miniapp vite
+dist-ssr
+*.local
 *.suo
 *.ntvs*
 *.njsproj
