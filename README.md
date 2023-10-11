@@ -69,3 +69,5 @@ git remote add origin git@github.com:newObjectccc/kch-pro.git
 
 4. commit 之后，push 代码到 origin
 5. 去到 github 上自己 fork 的仓库上，发起 Pull requests 到 upstream 即可
+
+注意发起 PR 到 upstream 时，选择正确的分支，一般为 main 分支
