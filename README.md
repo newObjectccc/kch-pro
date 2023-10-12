@@ -2,9 +2,7 @@
 
 ## 项目说明😎
 
-**
-本 monorepo 主要是为了统一使用 prettier，commitlint，eslint，husky，git，lint-staged，tsconfig 等
-**
+**本 monorepo 主要是为了统一使用 prettier，commitlint，eslint，husky，git，lint-staged，tsconfig 等，以便为了后续开发组件库，中间件库，工具库等做准备**
 
 ### 请使用 pnpm 进行包管理
 
@@ -20,7 +18,7 @@
 
 ### 子包管理请使用 pnpm -F <子包名>
 
-比如：
+比如启动项目：
 
 ```bash
   pnpm -F kch-backend start
@@ -32,6 +30,15 @@
 
 ```bash
   pnpm -F kch-saas dev
+```
+
+比如为子项目添加依赖
+
+```bash
+  # 添加开发依赖
+  pnpm -F <子项目名称> add <依赖名称> -D
+  # 添加生产依赖
+  pnpm -F <子项目名称> add <依赖名称> -S
 ```
 
 ### 全局管理请使用 pnpm -w
@@ -71,3 +78,5 @@ git remote add upstream git@github.com:newObjectccc/kch-pro.git
 5. 去到 github 上自己 fork 的仓库上，发起 Pull requests 到 upstream 即可
 
 注意发起 PR 到 upstream 时，选择正确的分支，一般为 main 分支
+
+> 不过目前是使用的组织仓库，请省去 fork 环节
