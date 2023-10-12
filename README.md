@@ -80,3 +80,6 @@ git remote add upstream git@github.com:newObjectccc/kch-pro.git
 注意发起 PR 到 upstream 时，选择正确的分支，一般为 main 分支
 
 > 不过目前是使用的组织仓库，请省去 fork 环节
+
+
+小管的新分支：feature-gxr-20231012
