@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
+import { appModules } from 'src/modulesMain';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ToBuserModule } from './to-buser/to-buser.module';
-import { ToCuserModule } from './to-cuser/to-cuser.module';
-
 @Module({
-  imports: [ToBuserModule, ToCuserModule],
+  imports: appModules,
   controllers: [AppController],
   providers: [AppService]
 })

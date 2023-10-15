@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ToBuser } from 'src/to-buser/entities/to-buser.entity';
+import { Repository } from 'typeorm';
 import { CreateToBuserDto } from './dto/create-to-buser.dto';
 import { UpdateToBuserDto } from './dto/update-to-buser.dto';
 
 @Injectable()
 export class ToBuserService {
-  create(createToBuserDto: CreateToBuserDto) {
-    return `This action adds a new toBuser ${JSON.stringify(createToBuserDto)}`;
+  constructor(
+    @InjectRepository(ToBuser)
+    private tobUserRepository: Repository<ToBuser>
+  ) {}
+
+  async create(createToBuserDto: CreateToBuserDto) {
+    const result = await this.tobUserRepository.save(createToBuserDto);
+    return `This action adds a new toBuser ${JSON.stringify(result)}`;
   }
 
-  findAll() {
-    return `This action returns all toBuser`;
+  findAll(): Promise<ToBuser[]> {
+    return this.tobUserRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} toBuser`;
+    return this.tobUserRepository.findOneBy({ id });
   }
 
-  update(id: number, updateToBuserDto: UpdateToBuserDto) {
-    return `This action updates a #${id} toBuser ${JSON.stringify(updateToBuserDto)}`;
+  async update(id: number, updateToBuserDto: UpdateToBuserDto) {
+    const result = await this.tobUserRepository.update(id, updateToBuserDto);
+    return `This action updates a #${id} toBuser ${JSON.stringify(result)}`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} toBuser`;
+  async remove(id: number) {
+    const result = await this.tobUserRepository.delete({ id });
+    return `This action removes a #${id} toBuser ${JSON.stringify(result)}`;
   }
 }

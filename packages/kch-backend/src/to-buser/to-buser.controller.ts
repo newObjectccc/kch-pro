@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ToBuserService } from './to-buser.service';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateToBuserDto } from './dto/create-to-buser.dto';
 import { UpdateToBuserDto } from './dto/update-to-buser.dto';
+import { ToBuserService } from './to-buser.service';
 
 @Controller('to-buser')
 export class ToBuserController {
