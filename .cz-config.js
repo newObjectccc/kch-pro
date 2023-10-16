@@ -19,6 +19,7 @@ module.exports = {
   // scope 类型（定义之后，可通过上下键选择）
   scopes: [
     ['kch-backend', '后端开发相关'],
+    ['kch-backend-api-gateway', '后台api网关开发相关'],
     ['kch-miniapp', '小程序或H5开发相关'],
     ['kch-saas', '后台saas开发相关'],
     ['components', '公共组件相关'],
