@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsDateString, IsNotEmpty } from 'class-validator';
 
 export class CreateToBuserDto {
   @IsNotEmpty()
@@ -13,9 +13,12 @@ export class CreateToBuserDto {
   @IsNotEmpty()
   pid: number;
 
-  @IsNotEmpty()
+  @IsDateString()
   created_at: string;
 
   @IsNotEmpty()
   created_by_id: string;
+
+  @IsNotEmpty()
+  created_by: string;
 }
