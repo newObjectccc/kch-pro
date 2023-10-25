@@ -1,28 +1,24 @@
-// import { PartialType } from '@nestjs/mapped-types';
-// import { CreateToBuserDto } from './create-to-buser.dto';
-
-// export class UpdateToBuserDto extends PartialType(CreateToBuserDto) {}
 import { IsDateString, IsInt, IsMobilePhone, IsNotEmpty, IsNumberString } from 'class-validator';
 
 export class UpdateToBuserDto {
-  username: string;
+  userName: string;
 
-  password_hash: string;
+  password: string;
 
   @IsMobilePhone()
-  phone_num: string;
+  phoneNum: string;
 
   @IsInt()
   pid: number;
 
   @IsDateString()
-  updated_at: string;
+  updatedAt: string;
 
   @IsNotEmpty()
-  updated_by_id: string;
+  updatedById: string;
 
   @IsNotEmpty()
-  updated_by: string;
+  updatedBy: string;
 }
 
 export class UpdateOneParamsDto {

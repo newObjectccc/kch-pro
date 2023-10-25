@@ -1,24 +1,32 @@
-import { IsDateString, IsNotEmpty } from 'class-validator';
+import { IsMobilePhone, IsNotEmpty } from 'class-validator';
 
 export class CreateToBuserDto {
   @IsNotEmpty()
-  username: string;
+  userName: string;
+
+  @IsMobilePhone('zh-CN')
+  phoneNum: string;
 
   @IsNotEmpty()
-  password_hash: string;
+  password: string;
 
-  @IsNotEmpty()
-  phone_num: string;
+  // @IsNotEmpty()
+  // phoneNum: string;
 
-  @IsNotEmpty()
-  pid: number;
+  // @IsNotEmpty()
+  // pid: number;
 
-  @IsDateString()
-  created_at: string;
+  // @IsDateString()
+  // createdAt: string;
 
-  @IsNotEmpty()
-  created_by_id: string;
+  // @IsNotEmpty()
+  // createdById: string;
 
-  @IsNotEmpty()
-  created_by: string;
+  // @IsNotEmpty()
+  // createdBy: string;
+}
+
+export class FindToBuserDto {
+  id?: number;
+  phoneNum?: string;
 }

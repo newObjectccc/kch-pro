@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ToBuser {
@@ -6,41 +6,41 @@ export class ToBuser {
   id: number;
 
   // 归属上级用户的id
-  @Column('int')
+  @Column({ type: 'int', nullable: true, default: null })
   pid: number;
 
-  @Column('varchar', { length: 20 })
-  phone_num: string;
+  @Column('varchar', { length: 20, nullable: true, default: null })
+  phoneNum: string;
 
-  @Column('varchar', { length: 50 })
-  username: string;
+  @Column('varchar', { length: 50, nullable: true, default: null })
+  userName: string;
 
   // bcrypt -> hash
   @Column('varchar', { length: 60 })
-  password_hash: string;
+  password: string;
 
   // 角色 id
   @Column('int', { nullable: true, default: null })
-  role_id: number;
+  roleId: number;
 
   // common fields
-  @Column({ type: 'datetime' })
-  created_at: string;
+  @CreateDateColumn({ type: 'datetime' })
+  createdAt: Date;
 
-  @Column('varchar', { length: 50 })
-  created_by: string;
+  // @Column('varchar', { length: 50 })
+  // createdBy: string;
 
-  @Column({ type: 'int' })
-  created_by_id: string;
+  // @Column({ type: 'int' })
+  // createdById: string;
 
   @Column({ type: 'datetime', nullable: true, default: null })
-  updated_at: string;
+  updatedAt: string;
 
   @Column('varchar', { length: 50, nullable: true, default: null })
-  updated_by: string;
+  updatedBy: string;
 
   @Column({ type: 'int', nullable: true, default: null })
-  updated_by_id: string;
+  updatedById: string;
 
   @Column('varchar', { length: 255, nullable: true, default: null })
   remark: string;
