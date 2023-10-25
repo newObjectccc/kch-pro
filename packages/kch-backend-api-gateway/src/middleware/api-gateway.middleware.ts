@@ -1,29 +1,37 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
 import { NextFunction } from 'express';
 import * as proxy from 'express-http-proxy';
-require('dotenv').config({
-  path: `./.env.${process.env.NODE_ENV ?? 'production'}`
-});
+import { AuthService } from 'src/auth/auth.service';
+import NO_VERIFY_API from '../utils/noVerifyApi';
+import SIGN_API from '../utils/signApi';
 
 @Injectable()
 export class ProxyMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
+  constructor(private authService: AuthService) {}
+  async use(req: Request, res: Response, next: NextFunction) {
     const proxyMiddleware = proxy(
-      `http://127.0.0.1:${process.env.TARGET_SERVER_EXPOSE_PORT ?? 3000}`,
+      `http://127.0.0.1:${process.env.TARGET_SERVER_EXPOSE_PORT ?? 3002}`,
       {
         proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
-        userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
-          // 在这里获取响应体
-          const responseBody = proxyResData.toString('utf8');
-          // 对响应体进行处理
-          console.log(responseBody);
-
-          return proxyResData;
+        proxyReqBodyDecorator: async (bodyContent, srcReq) => {
+          if (NO_VERIFY_API.includes(req.url)) return bodyContent;
+          // 验证 jwt token
+          const payload = await this.authService.verifyTokenToUserInfo(req);
+          if (!payload) throw new UnauthorizedException();
+          // 需要用户信息的api，可以建一个needUserInfoApiList，修改 bodyContent
+          return bodyContent;
+        },
+        userResDecorator: async (proxyRes, proxyResData, userReq, userRes) => {
+          let modifyBody = proxyResData;
+          if (SIGN_API.includes(req.url)) {
+            // 签发 jwt token
+            modifyBody = await this.authService.signJwtTokenInReqBody(proxyResData);
+          }
+          return modifyBody;
         }
       }
     );
 
-    // 将代理中间件绑定到Express应用程序
     proxyMiddleware(req, res, next);
   }
 }
