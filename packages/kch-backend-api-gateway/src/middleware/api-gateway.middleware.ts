@@ -14,7 +14,7 @@ export class ProxyMiddleware implements NestMiddleware {
       {
         proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
         proxyReqBodyDecorator: async (bodyContent, srcReq) => {
-          if (NO_VERIFY_API.includes(req.url)) return bodyContent;
+          if (NO_VERIFY_API.includes(req.url) || SIGN_API.includes(req.url)) return bodyContent;
           // 验证 jwt token
           const payload = await this.authService.verifyTokenToUserInfo(req);
           if (!payload) throw new UnauthorizedException();
