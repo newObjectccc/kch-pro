@@ -15,12 +15,14 @@ export class ToBroleService {
 
   async createTobRole(createToBroleDto: CreateToBroleDto) {
     const { pid } = createToBroleDto;
-    const isExsitParentByPid = await this.tobRoleRepository.findOneBy({ pid });
+    const isExsitParentByPid = await this.tobRoleRepository.findOneBy({ pid: +pid });
     if (!isExsitParentByPid) throw new HttpException(ERROR_MAP.get('PID_NOT_EXIST'), 201);
-    await this.tobRoleRepository.save(createToBroleDto);
+    const res = await this.tobRoleRepository.save(createToBroleDto);
+    if (!res) throw new HttpException(ERROR_MAP.get('ROLE_NAME_EXIST'), 201);
     return {
       code: '000',
-      message: '添加成功'
+      message: '添加成功',
+      data: res
     };
   }
 

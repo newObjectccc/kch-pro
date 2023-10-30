@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ToBuser {
@@ -9,9 +9,11 @@ export class ToBuser {
   @Column({ type: 'int', nullable: true, default: null })
   pid: number;
 
+  @Index({ unique: true })
   @Column('varchar', { length: 20, nullable: true, default: null })
   phoneNum: string;
 
+  @Index({ unique: true })
   @Column('varchar', { length: 50, nullable: true, default: null })
   username: string;
 
@@ -19,9 +21,9 @@ export class ToBuser {
   @Column('varchar', { length: 60 })
   password: string;
 
-  // 角色 id
-  @Column('int', { nullable: true, default: null })
-  roleId: number;
+  // // 角色 id
+  // @Column('int', { nullable: true, default: null })
+  // roleId: number;
 
   // common fields
   @CreateDateColumn({ type: 'datetime' })

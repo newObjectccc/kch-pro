@@ -78,10 +78,8 @@ export class ToBuserService {
   }
 
   async register(createToBuserDto: CreateToBuserDto) {
-    const { phoneNum } = createToBuserDto;
-    const isExist = await this.findOne({ phoneNum });
-    if (isExist) throw new HttpException(ERROR_MAP.get('PHONENUMBER_EXIST'), 201);
-    await this.create(createToBuserDto);
+    const res = await this.create(createToBuserDto);
+    if (!res) throw new HttpException(ERROR_MAP.get('REGISTER_FAILED'), 201);
     return {
       code: '000',
       message: '注册成功'

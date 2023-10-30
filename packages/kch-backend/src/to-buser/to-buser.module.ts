@@ -7,6 +7,7 @@ import { ToBuserService } from './to-buser.service';
 @Module({
   imports: [TypeOrmModule.forFeature([ToBuser])],
   controllers: [ToBuserController],
-  providers: [ToBuserService]
+  providers: [ToBuserService],
+  exports: [ToBuserService]
 })
 export class ToBuserModule {}

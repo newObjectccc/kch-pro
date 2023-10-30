@@ -7,6 +7,7 @@ import { ToBroleService } from './to-brole.service';
 @Module({
   imports: [TypeOrmModule.forFeature([ToBrole])],
   controllers: [ToBroleController],
-  providers: [ToBroleService]
+  providers: [ToBroleService],
+  exports: [ToBroleService]
 })
 export class ToBroleModule {}
