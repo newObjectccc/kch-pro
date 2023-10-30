@@ -1,7 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CreateToBuserDto } from './dto/create-to-buser.dto';
-import { LoginInToBuserDto } from './dto/loginIn-to-buser.dto';
-import { ToBuserService } from './to-buser.service';
+import { CreateToBuserDto } from 'src/to-buser/dto/create-to-buser.dto';
+import { FindAllByPaginationDto } from 'src/to-buser/dto/find-to-buser.dto';
+import { LoginInToBuserDto } from 'src/to-buser/dto/loginIn-to-buser.dto';
+import { ToBuserService } from 'src/to-buser/to-buser.service';
 
 @Controller('to-buser')
 export class ToBuserController {
@@ -12,9 +13,9 @@ export class ToBuserController {
   //   return this.toBuserService.create(createToBuserDto);
   // }
 
-  @Get()
-  findAll() {
-    return this.toBuserService.findAll();
+  @Post()
+  findAll(@Body() findAllToBuserDto: FindAllByPaginationDto) {
+    return this.toBuserService.findAll(findAllToBuserDto);
   }
 
   @Get(':id')

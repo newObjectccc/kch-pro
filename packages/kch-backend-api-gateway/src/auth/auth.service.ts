@@ -24,7 +24,7 @@ export class AuthService {
     return type === 'Bearer' ? token : undefined;
   }
 
-  async signJwtTokenInReqBody(proxyResData) {
+  async signJwtTokenInRespBody(proxyResData) {
     let respBody;
     try {
       respBody = JSON.parse(proxyResData.toString('utf8'));

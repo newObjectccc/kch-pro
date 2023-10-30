@@ -1,8 +1,11 @@
-import { IsMobilePhone, IsNotEmpty } from 'class-validator';
+import { IsMobilePhone, IsNotEmpty, IsNumberString } from 'class-validator';
 
 export class CreateToBuserDto {
   @IsNotEmpty()
-  userName: string;
+  username: string;
+
+  @IsNumberString()
+  pid: number;
 
   @IsMobilePhone('zh-CN')
   phoneNum: string;

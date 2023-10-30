@@ -13,7 +13,7 @@ export class ToBuser {
   phoneNum: string;
 
   @Column('varchar', { length: 50, nullable: true, default: null })
-  userName: string;
+  username: string;
 
   // bcrypt -> hash
   @Column('varchar', { length: 60 })

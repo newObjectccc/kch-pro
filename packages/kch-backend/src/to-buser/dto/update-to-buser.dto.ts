@@ -1,7 +1,7 @@
 import { IsDateString, IsInt, IsMobilePhone, IsNotEmpty, IsNumberString } from 'class-validator';
 
 export class UpdateToBuserDto {
-  userName: string;
+  username: string;
 
   password: string;
 

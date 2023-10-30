@@ -2,11 +2,12 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
 import { comparePassword, hashPassword } from 'helpers';
+import { CreateToBuserDto, FindToBuserDto } from 'src/to-buser/dto/create-to-buser.dto';
+import { FindAllByPaginationDto } from 'src/to-buser/dto/find-to-buser.dto';
+import { LoginInToBuserDto } from 'src/to-buser/dto/loginIn-to-buser.dto';
+import { UpdateToBuserDto } from 'src/to-buser/dto/update-to-buser.dto';
 import { ToBuser } from 'src/to-buser/entities/to-buser.entity';
 import { Repository } from 'typeorm';
-import { CreateToBuserDto, FindToBuserDto } from './dto/create-to-buser.dto';
-import { LoginInToBuserDto } from './dto/loginIn-to-buser.dto';
-import { UpdateToBuserDto } from './dto/update-to-buser.dto';
 
 @Injectable()
 export class ToBuserService {
@@ -17,29 +18,47 @@ export class ToBuserService {
 
   async create(createToBuserDto: CreateToBuserDto) {
     const { password } = createToBuserDto;
-    let result = null;
-    createToBuserDto.password = await hashPassword(password);
-    result = await this.tobUserRepository.save(createToBuserDto);
-    return result;
+    let res = null;
+    try {
+      createToBuserDto.password = await hashPassword(password);
+      res = await this.tobUserRepository.save(createToBuserDto);
+    } catch {}
+    return res;
   }
 
-  findAll(): Promise<ToBuser[]> {
-    return this.tobUserRepository.find();
+  async findAll(findAllByPagination: FindAllByPaginationDto) {
+    const { pageNo, pageSize: take } = findAllByPagination;
+    const res = await this.tobUserRepository.find({ skip: pageNo * take, take });
+    return {
+      code: '000',
+      message: '操作成功',
+      data: res
+    };
   }
 
   async findOne(fields: FindToBuserDto) {
     const res = await this.tobUserRepository.findOneBy(fields);
-    return res;
+    return {
+      code: '000',
+      message: '操作成功',
+      data: res
+    };
   }
 
   async update(id: number, updateToBuserDto: UpdateToBuserDto) {
-    const result = await this.tobUserRepository.update(id, updateToBuserDto);
-    return `This action updates a #${id} toBuser ${JSON.stringify(result)}`;
+    const res = await this.tobUserRepository.update(id, updateToBuserDto);
+    return {
+      code: '000',
+      message: '修改成功'
+    };
   }
 
   async remove(id: number) {
-    const result = await this.tobUserRepository.delete({ id });
-    return `This action removes a #${id} toBuser ${JSON.stringify(result)}`;
+    const res = await this.tobUserRepository.delete({ id });
+    return {
+      code: '000',
+      message: '删除成功'
+    };
   }
 
   async loginIn(loginInToBuserDto: LoginInToBuserDto) {
