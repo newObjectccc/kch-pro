@@ -5,5 +5,7 @@ export default new Map([
   ['PID_NOT_EXIST', { message: '上级ID不合法', error: 'PID_NOT_EXIST', code: '524' }],
   ['ROLE_NOT_EXIST', { message: '角色不存在', error: 'ROLE_NOT_EXIST', code: '525' }],
   ['ROLE_NAME_EXIST', { message: '角色已存在', error: 'ROLE_NAME_EXIST', code: '526' }],
-  ['REGISTER_FAILED', { message: '用户名或手机号已被注册', error: 'REGISTER_FAILED', code: '527' }]
+  ['REGISTER_FAILED', { message: '用户名或手机号已被注册', error: 'REGISTER_FAILED', code: '527' }],
+  ['CATEGORY_NAME_EXSIT', { message: '分类名称已存在', error: 'CATEGORY_NAME_EXSIT', code: '528' }],
+  ['UPLOAD_FAILED', { message: '上传失败', error: 'UPLOAD_FAILED', code: '529' }]
 ]);

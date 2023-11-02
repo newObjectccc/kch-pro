@@ -6,7 +6,7 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
 
 async function bootstrap() {
   // app instance
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { bodyParser: false });
 
   // global pipe
   app.useGlobalPipes(new ValidationPipe());

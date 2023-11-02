@@ -4,15 +4,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GlobalHttpExceptionFilter } from 'filters/global-http-exception.filter';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { BpermissionRelationMenuModule } from './bpermission-relation-menu/bpermission-relation-menu.module';
+import { BpermissionRelationOperationModule } from './bpermission-relation-operation/bpermission-relation-operation.module';
+import { BroleRelationBpermissionModule } from './brole-relation-bpermission/brole-relation-bpermission.module';
+import { BroleRelationBuserModule } from './brole-relation-buser/brole-relation-buser.module';
+import { CategoryModule } from './category/category.module';
+import { ToBpermissionModule } from './to-bpermission/to-bpermission.module';
 import { ToBroleModule } from './to-brole/to-brole.module';
 import { ToBuserModule } from './to-buser/to-buser.module';
 import { ToCroleModule } from './to-crole/to-crole.module';
 import { ToCuserModule } from './to-cuser/to-cuser.module';
-import { ToBpermissionModule } from './to-bpermission/to-bpermission.module';
-import { BroleRelationBuserModule } from './brole-relation-buser/brole-relation-buser.module';
-import { BroleRelationBpermissionModule } from './brole-relation-bpermission/brole-relation-bpermission.module';
-import { BpermissionRelationMenuModule } from './bpermission-relation-menu/bpermission-relation-menu.module';
-import { BpermissionRelationOperationModule } from './bpermission-relation-operation/bpermission-relation-operation.module';
+import { UploadModule } from './upload/upload.module';
 
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}` });
 
@@ -36,7 +38,9 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
     BroleRelationBuserModule,
     BroleRelationBpermissionModule,
     BpermissionRelationMenuModule,
-    BpermissionRelationOperationModule
+    BpermissionRelationOperationModule,
+    CategoryModule,
+    UploadModule
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_FILTER, useClass: GlobalHttpExceptionFilter }]
