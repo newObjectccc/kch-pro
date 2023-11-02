@@ -188,6 +188,82 @@ importers:
         specifier: ^1.53.0
         version: 1.53.0
 
+  packages/cq-miniapp:
+    dependencies:
+      '@dcloudio/uni-app':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(@dcloudio/types@3.3.2)(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-app-plus':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vite@4.0.4)(vue@3.2.45)
+      '@dcloudio/uni-components':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-h5':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-alipay':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-baidu':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-jd':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-kuaishou':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-lark':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-qq':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-toutiao':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-mp-weixin':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-quickapp-webview':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      vue:
+        specifier: ^3.2.45
+        version: 3.2.45
+      vue-i18n:
+        specifier: ^9.1.9
+        version: 9.1.9(vue@3.2.45)
+    devDependencies:
+      '@dcloudio/types':
+        specifier: ^3.3.2
+        version: 3.3.2
+      '@dcloudio/uni-automator':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(jest-environment-node@27.5.1)(jest@27.0.4)(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-cli-shared':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vue@3.2.45)
+      '@dcloudio/uni-stacktracey':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001
+      '@dcloudio/vite-plugin-uni':
+        specifier: 3.0.0-3080720230703001
+        version: 3.0.0-3080720230703001(postcss@8.4.31)(ts-node@10.9.1)(vite@4.0.4)(vue@3.2.45)
+      '@vue/tsconfig':
+        specifier: ^0.1.3
+        version: 0.1.3(@types/node@20.5.1)
+      typescript:
+        specifier: ^4.9.4
+        version: 4.9.4
+      vite:
+        specifier: 4.0.4
+        version: 4.0.4(@types/node@20.5.1)(terser@5.21.0)
+      vue-tsc:
+        specifier: ^1.0.24
+        version: 1.0.24(typescript@4.9.4)
+
   packages/kch-backend:
     dependencies:
       '@nestjs/common':
@@ -689,20 +765,6 @@ packages:
       '@babel/helper-annotate-as-pure': 7.22.5
       regexpu-core: 5.3.2
       semver: 6.3.1
-
-  /@babel/helper-define-polyfill-provider@0.4.2(@babel/core@7.23.0):
-    resolution: {integrity: sha512-k0qnnOqHn5dK9pZpfD5XXZ9SojAITdCKRn2Lp6rnDGzIbaP0rHyMPk/4wsSxVBVz4RfN0q6VpXWP2pDGIoQ7hw==}
-    peerDependencies:
-      '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
-    dependencies:
-      '@babel/core': 7.23.0
-      '@babel/helper-compilation-targets': 7.22.15
-      '@babel/helper-plugin-utils': 7.22.5
-      debug: 4.3.4
-      lodash.debounce: 4.0.8
-      resolve: 1.22.6
-    transitivePeerDependencies:
-      - supports-color
 
   /@babel/helper-define-polyfill-provider@0.4.3(@babel/core@7.23.0):
     resolution: {integrity: sha512-WBrLmuPP47n7PNwsZ57pqam6G/RGo1vw/87b0Blc53tZNGZ4x7YvZ6HgQe2vo1W/FR20OgjeZuGXzudPiXHFug==}
@@ -2445,7 +2507,7 @@ packages:
       fs-extra: 10.1.0
       hash-sum: 2.0.0
       jsonc-parser: 3.2.0
-      magic-string: 0.30.0
+      magic-string: 0.30.4
       merge: 2.1.1
       mime: 3.0.0
       module-alias: 2.2.3
@@ -2825,7 +2887,7 @@ packages:
       fs-extra: 10.1.0
       hash-sum: 2.0.0
       jsonc-parser: 3.2.0
-      magic-string: 0.30.0
+      magic-string: 0.30.4
       picocolors: 1.0.0
       terser: 5.21.0
       vite: 4.0.4(@types/node@20.5.1)(terser@5.21.0)
@@ -7084,7 +7146,7 @@ packages:
     dependencies:
       '@babel/compat-data': 7.22.20
       '@babel/core': 7.23.0
-      '@babel/helper-define-polyfill-provider': 0.4.2(@babel/core@7.23.0)
+      '@babel/helper-define-polyfill-provider': 0.4.3(@babel/core@7.23.0)
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7107,7 +7169,7 @@ packages:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
       '@babel/core': 7.23.0
-      '@babel/helper-define-polyfill-provider': 0.4.2(@babel/core@7.23.0)
+      '@babel/helper-define-polyfill-provider': 0.4.3(@babel/core@7.23.0)
       core-js-compat: 3.33.0
     transitivePeerDependencies:
       - supports-color
@@ -7129,7 +7191,7 @@ packages:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
       '@babel/core': 7.23.0
-      '@babel/helper-define-polyfill-provider': 0.4.2(@babel/core@7.23.0)
+      '@babel/helper-define-polyfill-provider': 0.4.3(@babel/core@7.23.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -12535,13 +12597,13 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
 
   /magic-string@0.30.4:
     resolution: {integrity: sha512-Q/TKtsC5BPm0kGqgBIF9oXAs/xEf2vRKiIB4wCRQTJOQIByZ1d+NnUOotvJOvNpi5RNIgVOMC3pOuaP1ZTDlVg==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
-    dev: true
 
   /make-dir@3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
