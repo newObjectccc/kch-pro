@@ -1,7 +1,7 @@
 version: '1'
 services:
   app:
-    image: GITEE_DOCKER_IMAGE
+    image: cq-backend:latest
     ports:
       - '3000:80'
     depends_on:
