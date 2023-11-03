@@ -8,6 +8,7 @@ COPY . .
 USER root
 RUN npm install -g pnpm
 RUN pnpm install
+RUN ls
 RUN npm run build:kch-backend
 
 EXPOSE 3000
