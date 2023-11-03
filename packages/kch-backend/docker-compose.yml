@@ -1,0 +1,17 @@
+version: '1'
+services:
+  app:
+    image: GITEE_DOCKER_IMAGE
+    ports:
+      - '3000:80'
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: kch_database
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
