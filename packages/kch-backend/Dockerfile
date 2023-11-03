@@ -5,7 +5,7 @@ WORKDIR /
 
 COPY . .
 
-RUN npm install pnpm
+RUN npm install -g pnpm
 RUN pnpm install
 RUN pnpm -F kch-backend build
 
