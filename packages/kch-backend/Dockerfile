@@ -5,9 +5,10 @@ WORKDIR ../../
 
 COPY . .
 
+USER root
 RUN npm install -g pnpm
 RUN pnpm install
-RUN pnpm -F kch-backend build
+RUN npm run build:kch-backend
 
 EXPOSE 3000
 

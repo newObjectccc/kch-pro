@@ -5,6 +5,7 @@
   "packageManager": "pnpm@8.6.10",
   "private": true,
   "scripts": {
+    "build:kch-backend": "pnpm -F kch-backend build",
     "prepare": "husky install",
     "commit": "git-cz"
   },
