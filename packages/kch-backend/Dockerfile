@@ -11,4 +11,4 @@ RUN pnpm -F kch-backend build
 
 EXPOSE 3000
 
-CMD ["pnpm", "start:prod"]
+CMD ["pnpm", "-F", "kch-backend", "start:prod"]
