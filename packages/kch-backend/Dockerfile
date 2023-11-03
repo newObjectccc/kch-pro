@@ -1,7 +1,7 @@
 FROM node:18
 
 # kch-pro 根目录
-WORKDIR /
+WORKDIR ../../
 
 COPY . .
 
