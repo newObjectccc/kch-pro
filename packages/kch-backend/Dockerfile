@@ -1,14 +1,14 @@
 FROM node:18
 
 # kch-pro 根目录
-WORKDIR ../../
+WORKDIR /
 
 COPY . .
 
-RUN npm install -g pnpm
+RUN npm install pnpm
 RUN pnpm install
-RUN pnpm build:kch-backend
+RUN pnpm -F kch-backend build
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "start:prod"]
