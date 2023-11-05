@@ -15,6 +15,8 @@ import { ToBuserModule } from './to-buser/to-buser.module';
 import { ToCroleModule } from './to-crole/to-crole.module';
 import { ToCuserModule } from './to-cuser/to-cuser.module';
 import { UploadModule } from './upload/upload.module';
+import { CourseModule } from './course/course.module';
+import { ChapterModule } from './chapter/chapter.module';
 
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}` });
 
@@ -40,7 +42,9 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
     BpermissionRelationMenuModule,
     BpermissionRelationOperationModule,
     CategoryModule,
-    UploadModule
+    UploadModule,
+    CourseModule,
+    ChapterModule
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_FILTER, useClass: GlobalHttpExceptionFilter }]
