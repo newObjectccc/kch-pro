@@ -21,6 +21,7 @@ module.exports = {
     ['kch-backend', '后端开发相关'],
     ['kch-backend-api-gateway', '后台api网关开发相关'],
     ['kch-miniapp', '小程序或H5开发相关'],
+    ['kch-admin', '学会后台'],
     ['kch-saas', '后台saas开发相关'],
     ['cq-admin', '重庆办公室后台'],
     ['cq-miniapp', '重庆小程序'],
