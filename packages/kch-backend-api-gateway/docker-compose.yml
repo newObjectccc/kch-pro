@@ -4,3 +4,5 @@ services:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-api-gateway:latest
     ports:
       - '80:80'
+# 这个 docker-compose.yml 并没有用，但依然建议维护
+# 在服务器上有维护，如果此配置有修改，请手动复制到服务器部署目录下的yml文件中
