@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  kchbackend:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-images:latest
     ports:
       - '3000:3000'
