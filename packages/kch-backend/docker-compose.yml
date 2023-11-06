@@ -15,3 +15,4 @@ services:
       - db-data:/var/lib/mysql
 volumes:
   db-data:
+# 这个 docker-compose.yml 并没有用，在服务器上有维护
