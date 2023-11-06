@@ -12,4 +12,4 @@ RUN npm run build
 
 EXPOSE 80
 
-CMD ["ls"]
+CMD ["pnpm", "-F", "kch-backend-api-gateway", "start:prod"]

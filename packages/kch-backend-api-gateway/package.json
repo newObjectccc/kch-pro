@@ -29,7 +29,7 @@
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:dev": "cross-env NODE_ENV=development nest start --watch",
-    "start:prod": "ls",
+    "start:prod": "cross-env NODE_ENV=production node dist/main",
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
