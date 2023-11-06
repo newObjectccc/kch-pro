@@ -1,7 +1,7 @@
 version: '3'
 services:
   apigateway:
-    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-api-gateway:latest
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/kch-apigateway:latest
     ports:
       - '80:80'
 # 这个 docker-compose.yml 并没有用，但依然建议维护
