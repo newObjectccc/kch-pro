@@ -10,7 +10,7 @@ export class ProxyMiddleware implements NestMiddleware {
   constructor(private authService: AuthService) {}
   async use(req: Request, res: Response, next: NextFunction) {
     const proxyMiddleware = proxy(
-      `http://127.0.0.1:${process.env.TARGET_SERVER_EXPOSE_PORT ?? 3002}`,
+      `http://127.0.0.1:${process.env.TARGET_SERVER_EXPOSE_PORT ?? 3000}`,
       {
         proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
         proxyReqBodyDecorator: async (bodyContent, srcReq) => {

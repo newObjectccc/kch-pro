@@ -3,7 +3,7 @@ services:
   app:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-images:latest
     ports:
-      - '3000:80'
+      - '3000:3000'
     depends_on:
       - db
   db:
