@@ -6,19 +6,22 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
 
 async function bootstrap() {
   // app instance
-  const app = await NestFactory.create(AppModule, { bodyParser: false });
+  const app = await NestFactory.create(AppModule);
 
   // global pipe
   app.useGlobalPipes(new ValidationPipe());
 
+  // if (process.env.NODE_ENV !== 'production') {
   // swagger
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Swagger Documentation')
     .setDescription('Apis Documentation')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('swagger', app, document);
+  // }
 
   // app run
   await app.listen(process.env.SERVER_EXPOSE_PORT ?? 3000);

@@ -38,6 +38,7 @@ export class ToBuserService {
 
   async findOne(fields: FindToBuserDto) {
     const res = await this.tobUserRepository.findOneBy(fields);
+    if (!res) throw new HttpException(ERROR_MAP.get('USER_NOT_EXIST'), 201);
     return {
       code: '000',
       message: '操作成功',

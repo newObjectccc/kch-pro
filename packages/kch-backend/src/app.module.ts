@@ -9,14 +9,16 @@ import { BpermissionRelationOperationModule } from './bpermission-relation-opera
 import { BroleRelationBpermissionModule } from './brole-relation-bpermission/brole-relation-bpermission.module';
 import { BroleRelationBuserModule } from './brole-relation-buser/brole-relation-buser.module';
 import { CategoryModule } from './category/category.module';
+import { CertificateModule } from './certificate/certificate.module';
+import { ChapterModule } from './chapter/chapter.module';
+import { CourseModule } from './course/course.module';
+import { OrderModule } from './order/order.module';
 import { ToBpermissionModule } from './to-bpermission/to-bpermission.module';
 import { ToBroleModule } from './to-brole/to-brole.module';
 import { ToBuserModule } from './to-buser/to-buser.module';
 import { ToCroleModule } from './to-crole/to-crole.module';
 import { ToCuserModule } from './to-cuser/to-cuser.module';
 import { UploadModule } from './upload/upload.module';
-import { CourseModule } from './course/course.module';
-import { ChapterModule } from './chapter/chapter.module';
 
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}` });
 
@@ -44,7 +46,9 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
     CategoryModule,
     UploadModule,
     CourseModule,
-    ChapterModule
+    ChapterModule,
+    CertificateModule,
+    OrderModule
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_FILTER, useClass: GlobalHttpExceptionFilter }]
