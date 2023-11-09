@@ -1,7 +1,7 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsDateString, IsMobilePhone, IsNotEmpty, IsNumberString } from 'class-validator';
 
-export class UpdateToBuserDto {
+export class UpdateToBuser {
   @ApiProperty({ default: '李超' })
   username: string;
 
@@ -27,6 +27,8 @@ export class UpdateToBuserDto {
   @IsNotEmpty()
   updatedBy: string;
 }
+
+export class UpdateToBuserDto extends PartialType(UpdateToBuser) {}
 
 export class IsNumStringDto {
   @IsNumberString()

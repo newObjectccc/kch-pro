@@ -2,8 +2,8 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
 import { comparePassword, hashPassword } from 'helpers';
-import { CreateToBuserDto, FindToBuserDto } from 'src/to-buser/dto/create-to-buser.dto';
-import { FindAllByPaginationDto } from 'src/to-buser/dto/find-to-buser.dto';
+import { CreateToBuserDto } from 'src/to-buser/dto/create-to-buser.dto';
+import { FindListBuserDto, FindToBuserDto } from 'src/to-buser/dto/find-to-buser.dto';
 import { LoginInToBuserDto } from 'src/to-buser/dto/loginIn-to-buser.dto';
 import { UpdateToBuserDto } from 'src/to-buser/dto/update-to-buser.dto';
 import { ToBuser } from 'src/to-buser/entities/to-buser.entity';
@@ -26,13 +26,13 @@ export class ToBuserService {
     return res;
   }
 
-  async findAll(findAllByPagination: FindAllByPaginationDto) {
-    const { pageNo, pageSize: take } = findAllByPagination;
-    const res = await this.tobUserRepository.find({ skip: pageNo * take, take });
+  async findAll(findAllByPagination: FindListBuserDto) {
+    const { pageNo, pageSize: take, ...restParams } = findAllByPagination;
+    const res = await this.tobUserRepository.find({ skip: pageNo * take, take, where: restParams });
     return {
       code: '000',
       message: '操作成功',
-      data: res
+      data: res ?? []
     };
   }
 
@@ -47,6 +47,7 @@ export class ToBuserService {
   }
 
   async update(id: number, updateToBuserDto: UpdateToBuserDto) {
+    if (isNaN(id as any)) throw new HttpException(ERROR_MAP.get('UNKNOWN_USER_ID'), 201);
     const res = await this.tobUserRepository.update(id, updateToBuserDto);
     return {
       code: '000',
@@ -55,6 +56,7 @@ export class ToBuserService {
   }
 
   async remove(id: number) {
+    if (isNaN(id as any)) throw new HttpException(ERROR_MAP.get('UNKNOWN_USER_ID'), 201);
     const res = await this.tobUserRepository.delete({ id });
     return {
       code: '000',

@@ -33,10 +33,3 @@ export class CreateToBuserDto {
   // @IsNotEmpty()
   // createdBy: string;
 }
-
-export class FindToBuserDto {
-  @ApiProperty({ default: '1' })
-  id?: number;
-  @ApiProperty({ default: '18108370361' })
-  phoneNum?: string;
-}
