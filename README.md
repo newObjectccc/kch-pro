@@ -71,7 +71,7 @@ git remote -v
 # 设置 origin 为 fork 到自己的 github 的仓库
 git remote add origin <你自己的github仓库地址>
 # 设置 upstream 为上游目标仓库（即本仓库）
-git remote add upstream git@github.com:newObjectccc/kch-pro.git
+git remote add upstream git@gitee.com:cqrysywh/kch-pro.git
 ```
 
 4. commit 之后，push 代码到 origin
@@ -80,6 +80,5 @@ git remote add upstream git@github.com:newObjectccc/kch-pro.git
 注意发起 PR 到 upstream 时，选择正确的分支，一般为 main 分支
 
 > 不过目前是使用的组织仓库，请省去 fork 环节
-
 
 小管的新分支：feature-gxr-20231012
