@@ -1,12 +1,12 @@
 import { createRoot } from 'react-dom/client';
 
 // third party
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 // project imports
-import * as serviceWorker from 'serviceWorker';
 import App from 'App';
+import * as serviceWorker from 'serviceWorker';
 import { store } from 'store';
 
 // style + assets
