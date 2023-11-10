@@ -9,7 +9,7 @@ export class ToCuser {
   id: number;
 
   @Index()
-  @Column('varchar', { length: 50, unique: true })
+  @Column('varchar', { length: 50 })
   username: string;
 
   @Column('varchar', { length: 50 })
@@ -22,10 +22,10 @@ export class ToCuser {
   integral: number;
 
   @Index()
-  @Column({ unique: true })
+  @Column()
   phoneNum: string;
 
-  @Column('int', { unique: true })
+  @Column('int')
   roleId: number;
 
   @OneToMany(() => Certificate, (cert) => cert.id)

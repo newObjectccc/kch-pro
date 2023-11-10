@@ -10,15 +10,15 @@ export class Course {
   @Column('varchar', { length: 200 })
   name: string;
 
-  @OneToMany(() => Category, (cate: Category) => cate.id)
-  categoryList: number[];
-
   @Column('varchar', { length: 256 })
   cover: string;
 
   @Column('decimal')
   price: number;
 
+  @OneToMany(() => Category, (cate: Category) => cate.id)
+  categoryIdList: number[];
+
   @OneToMany(() => Chapter, (chap: Chapter) => chap.id)
-  chapterList: number[];
+  chapterIdList: number[];
 }

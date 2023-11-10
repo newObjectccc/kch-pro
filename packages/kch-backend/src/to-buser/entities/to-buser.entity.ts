@@ -21,19 +21,19 @@ export class ToBuser {
   @Column('varchar', { length: 60 })
   password: string;
 
-  // // 角色 id
-  // @Column('int', { nullable: true, default: null })
-  // roleId: number;
+  // 角色 id
+  @Column('int', { nullable: true, default: null })
+  roleId: number;
 
   // common fields
   @CreateDateColumn({ type: 'datetime' })
   createdAt: Date;
 
-  // @Column('varchar', { length: 50 })
-  // createdBy: string;
+  @Column('varchar', { length: 50 })
+  createdBy: string;
 
-  // @Column({ type: 'int' })
-  // createdById: string;
+  @Column({ type: 'int' })
+  createdById: string;
 
   @Column({ type: 'datetime', nullable: true, default: null })
   updatedAt: string;
