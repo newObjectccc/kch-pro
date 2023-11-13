@@ -6,11 +6,64 @@
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/course/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/msg/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#0047BB",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icons/home_unselected.png",
+        "selectedIconPath": "static/icons/home_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/course/index",
+        "iconPath": "static/icons/home_unselected.png",
+        "selectedIconPath": "static/icons/home_selected.png",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/msg/index",
+        "iconPath": "static/icons/home_unselected.png",
+        "selectedIconPath": "static/icons/home_selected.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "static/icons/home_unselected.png",
+        "selectedIconPath": "static/icons/home_selected.png",
+        "text": "我的"
+      }
+    ]
   }
 }
