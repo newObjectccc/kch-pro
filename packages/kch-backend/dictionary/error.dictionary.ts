@@ -9,5 +9,6 @@ export default new Map([
   ['CATEGORY_NAME_EXSIT', { message: '分类名称已存在', error: 'CATEGORY_NAME_EXSIT', code: '528' }],
   ['UPLOAD_FAILED', { message: '上传失败', error: 'UPLOAD_FAILED', code: '529' }],
   ['USER_NOT_EXIST', { message: '未知的用户ID', error: 'USER_NOT_EXIST', code: '530' }],
-  ['UNKNOWN_ORDER_ID', { message: '未知的订单ID', error: 'UNKNOWN_ORDER_ID', code: '531' }]
+  ['UNKNOWN_ORDER_ID', { message: '未知的订单ID', error: 'UNKNOWN_ORDER_ID', code: '531' }],
+  ['PAGINATION_INVALID', { message: '无效的分页查询', error: 'PAGINATION_INVALID', code: '532' }]
 ]);

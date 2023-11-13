@@ -36,9 +36,10 @@ export class ToBuserService {
     };
   }
 
-  async findOne(fields: FindToBuserDto) {
+  async findOne(fields: FindToBuserDto, noPwd: boolean = true) {
     const res = await this.tobUserRepository.findOneBy(fields);
     if (!res) throw new HttpException(ERROR_MAP.get('USER_NOT_EXIST'), 201);
+    if (noPwd) delete res.password;
     return {
       code: '000',
       message: '操作成功',
@@ -68,15 +69,15 @@ export class ToBuserService {
     const { password, phoneNum } = loginInToBuserDto;
     let res = null;
     let checkPassword = false;
-    res = await this.findOne({ phoneNum });
+    res = await this.findOne({ phoneNum }, false);
     if (!res) throw new HttpException(ERROR_MAP.get('USER_NOT_EXIST'), 201);
-    checkPassword = await comparePassword(password, res.password);
+    checkPassword = await comparePassword(password, res.data.password);
     if (!checkPassword) throw new HttpException(ERROR_MAP.get('WRONG_PASSWORD'), 201);
     delete res.password;
     return {
       code: '000',
       message: '登录成功',
-      data: res
+      data: res.data
     };
   }
 

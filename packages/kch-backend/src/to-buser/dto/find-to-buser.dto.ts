@@ -2,9 +2,11 @@ import { ApiProperty, IntersectionType, PartialType } from '@nestjs/swagger';
 import { IsNumber } from 'class-validator';
 
 export class PaginationDto {
+  @ApiProperty({ default: 1 })
   @IsNumber()
   pageNo: number;
 
+  @ApiProperty({ default: 20 })
   @IsNumber()
   pageSize: number;
 }

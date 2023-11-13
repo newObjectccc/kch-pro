@@ -5,7 +5,7 @@ export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('int')
+  @Column('int', { nullable: true })
   pid: number;
 
   @Index()
