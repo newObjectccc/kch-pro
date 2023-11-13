@@ -1,0 +1,99 @@
+// 最多展示2行
+.line-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+/* 文字超出一排... */
+.line-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.vertical {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+.horizontal {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.center {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
+// 隐藏滚动条样式
+.hide-scroll-bar {
+  ::-webkit-scrollbar {
+      display: none;
+      width: 0 !important;
+      height: 0 !important;
+      -webkit-appearance: none;
+      background-color: transparent;
+  }
+}
+/*  -- flex弹性布局 -- */
+
+.flex {
+  display: flex;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+view,
+scroll-view,
+swiper,
+button,
+input,
+textarea,
+label,
+navigator,
+image {
+  box-sizing: border-box;
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.btn-hover {
+  transform: translate(10rpx, 10rpx);
+  transition: 0.2s;
+}

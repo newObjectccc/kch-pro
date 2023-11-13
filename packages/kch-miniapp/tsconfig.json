@@ -9,5 +9,13 @@
     "lib": ["esnext", "dom"],
     "types": ["@dcloudio/types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  /* 语法检查 */
+  "noUnusedLocals": true, //是否检查未使用的局部变量
+  "noUnusedParameters": true, //是否检查未使用的参数
+  "noImplicitReturns": true, //检查函数是否不含有隐式返回值
+  "noImplicitOverride": true, //是否检查子类继承自基类时，其重载的函数命名与基类的函数不同步问题
+  "noFallthroughCasesInSwitch": true, //检查switch中是否含有case没有使用break跳出
+  // 指定被编译文件所在的目录
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "src/static/*.js"]
 }
