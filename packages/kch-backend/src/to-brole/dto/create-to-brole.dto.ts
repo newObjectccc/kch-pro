@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumberString } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateToBroleDto {
   @ApiProperty({ default: '北师大老师' })
@@ -7,6 +7,12 @@ export class CreateToBroleDto {
   name: string;
 
   @ApiProperty({ default: '1' })
-  @IsNumberString()
+  // @IsNumber()
   pid: number;
+
+  @IsNotEmpty()
+  createdBy: string;
+
+  @IsNumber()
+  createdById: number;
 }

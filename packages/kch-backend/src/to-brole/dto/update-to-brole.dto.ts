@@ -1,5 +1,5 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsDateString, IsNumberString, IsString } from 'class-validator';
+import { IsDateString, IsNumber, IsString } from 'class-validator';
 import { CreateToBroleDto } from './create-to-brole.dto';
 
 export class UpdateToBroleDto extends PartialType(CreateToBroleDto) {
@@ -11,8 +11,8 @@ export class UpdateToBroleDto extends PartialType(CreateToBroleDto) {
   @IsDateString()
   updatedAt: string;
 
-  @ApiProperty({ default: '1' })
-  @IsNumberString()
+  @ApiProperty({ default: 1 })
+  @IsNumber()
   updatedById: number;
 
   @ApiProperty({ default: '李超是母零' })

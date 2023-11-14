@@ -21,7 +21,7 @@ export class BroleRelationBuserService {
     const { userId, roleId } = createBroleRelationBuserDto;
     const isUserIdExsit = await this.toBuserService.findOne({ id: +userId });
     if (!isUserIdExsit) throw new HttpException(ERROR_MAP.get('USER_NOT_EXIST'), 201);
-    const isRoleIdExsit = await this.toBroleService.findOne(+roleId);
+    const isRoleIdExsit = await this.toBroleService.findOne({ id: roleId });
     if (!isRoleIdExsit) throw new HttpException(ERROR_MAP.get('ROLE_NOT_EXIST'), 201);
     const res = await this.bRoleRelationBuser.save(createBroleRelationBuserDto);
     return {

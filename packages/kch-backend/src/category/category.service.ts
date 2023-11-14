@@ -1,7 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
-import { findListByPagination } from 'helpers';
 import { FindCategoryDto, FindListCategoryDto } from 'src/category/dto/find-category.dto';
 import { Category } from 'src/category/entities/category.entity';
 import { Repository } from 'typeorm';
@@ -36,7 +35,7 @@ export class CategoryService {
   }
 
   async findAll(findListCategoryDto: FindListCategoryDto) {
-    const res = await findListByPagination(findListCategoryDto, this.categoryRepository);
+    const res = await this.categoryRepository.findBy(findListCategoryDto);
     return {
       code: '000',
       message: '操作成功',

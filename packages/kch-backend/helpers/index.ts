@@ -1,1 +1,7 @@
-export { comparePassword, findListByPagination, hashPassword } from './common';
+export {
+  comparePassword,
+  findListByPagination,
+  getTypeString,
+  hashPassword,
+  isEmptyObject
+} from './common';

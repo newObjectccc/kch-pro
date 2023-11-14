@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Patch, Post } from '@nestjs/common';
+import { FindBroleDto, FindListBroleDto } from 'src/to-brole/dto/find-to-brole.dto';
 import { CreateToBroleDto } from './dto/create-to-brole.dto';
 import { UpdateToBroleDto } from './dto/update-to-brole.dto';
 import { ToBroleService } from './to-brole.service';
@@ -12,14 +13,14 @@ export class ToBroleController {
     return this.toBroleService.createTobRole(createToBroleDto);
   }
 
-  @Get()
-  findAll() {
-    return this.toBroleService.findAll();
+  @Post('list')
+  findAll(@Body() findListToBroleDto: FindListBroleDto) {
+    return this.toBroleService.findAll(findListToBroleDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.toBroleService.findOne(+id);
+  @Post('find')
+  findOne(@Body() fields: FindBroleDto) {
+    return this.toBroleService.findOne(fields);
   }
 
   @Patch(':id')

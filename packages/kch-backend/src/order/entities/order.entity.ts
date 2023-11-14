@@ -1,8 +1,8 @@
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum OrderType {
-  Course = 1,
-  Assessment = 2
+  Course = 1, // 课程
+  Assessment = 2 // 评测
 }
 
 @Entity()

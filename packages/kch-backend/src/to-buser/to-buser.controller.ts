@@ -16,7 +16,7 @@ export class ToBuserController {
     return this.toBuserService.findAll(findAllToBuserDto);
   }
 
-  @Post()
+  @Post('find')
   findOne(@Body() findOneBuserDto: FindToBuserDto) {
     return this.toBuserService.findOne(findOneBuserDto);
   }

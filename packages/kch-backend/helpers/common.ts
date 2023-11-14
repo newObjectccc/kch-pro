@@ -25,3 +25,14 @@ export async function findListByPagination<T extends PaginationDto>(
   if (!pageNo || !take) throw new HttpException(ERROR_MAP.get('PAGINATION_INVALID'), 201);
   return await repo.find({ skip: (pageNo - 1) * take, take, where: restParams });
 }
+
+export async function getTypeString(val: any) {
+  return Object.prototype.toString.call(val).slice(8, -1);
+}
+
+export async function isEmptyObject(obj: any) {
+  try {
+    if ((await getTypeString(obj)) === 'Object' && JSON.stringify(obj) === '{}') return true;
+  } catch {}
+  return false;
+}

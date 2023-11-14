@@ -1,4 +1,4 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ToBrole {
@@ -9,8 +9,18 @@ export class ToBrole {
   @Index({ unique: true })
   name: string;
 
-  @Column('int')
+  @Column('int', { nullable: true })
   pid: number;
+
+  // common fields
+  @CreateDateColumn({ type: 'datetime' })
+  createdAt: Date;
+
+  @Column('varchar', { length: 50 })
+  createdBy: string;
+
+  @Column({ type: 'int' })
+  createdById: number;
 
   @Column({ type: 'datetime', default: null, nullable: true })
   updatedAt: string;

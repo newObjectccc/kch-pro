@@ -1,6 +1,8 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
+import { findListByPagination, isEmptyObject } from 'helpers';
+import { FindBroleDto, FindListBroleDto } from 'src/to-brole/dto/find-to-brole.dto';
 import { ToBrole } from 'src/to-brole/entities/to-brole.entity';
 import { Repository } from 'typeorm';
 import { CreateToBroleDto } from './dto/create-to-brole.dto';
@@ -15,8 +17,10 @@ export class ToBroleService {
 
   async createTobRole(createToBroleDto: CreateToBroleDto) {
     const { pid } = createToBroleDto;
-    const isExsitParentByPid = await this.tobRoleRepository.findOneBy({ pid: +pid });
-    if (!isExsitParentByPid) throw new HttpException(ERROR_MAP.get('PID_NOT_EXIST'), 201);
+    if (pid) {
+      const isExsitParentByPid = await this.tobRoleRepository.findOneBy({ pid: +pid });
+      if (!isExsitParentByPid) throw new HttpException(ERROR_MAP.get('PID_NOT_EXIST'), 201);
+    }
     const res = await this.tobRoleRepository.save(createToBroleDto);
     if (!res) throw new HttpException(ERROR_MAP.get('ROLE_NAME_EXIST'), 201);
     return {
@@ -26,8 +30,8 @@ export class ToBroleService {
     };
   }
 
-  async findAll() {
-    const res = await this.tobRoleRepository.find();
+  async findAll(findListBroleDto: FindListBroleDto) {
+    const res = await findListByPagination(findListBroleDto, this.tobRoleRepository);
     return {
       code: '000',
       message: '操作成功',
@@ -35,8 +39,9 @@ export class ToBroleService {
     };
   }
 
-  async findOne(id: number) {
-    const res = await this.tobRoleRepository.findOneBy({ id });
+  async findOne(fields: FindBroleDto) {
+    if (await isEmptyObject(fields)) throw new HttpException(ERROR_MAP.get('INVALID_PARAMS'), 201);
+    const res = await this.tobRoleRepository.findOneBy(fields);
     return {
       code: '000',
       message: '操作成功',
