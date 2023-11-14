@@ -1,10 +1,10 @@
 export default new Map([
-  // 客户端输入错误 400+
-  ['WRONG_PASSWORD', { message: '密码输入错误', error: 'WRONG_PASSWORD', code: '421' }],
-  ['PHONENUMBER_EXIST', { message: '用户手机号已存在', error: 'WRONG_PASSWORD', code: '422' }],
-  ['USER_NOT_EXIST', { message: '用户不存在', error: 'USER_NOT_EXIST', code: '423' }],
-  ['PID_NOT_EXIST', { message: '上级ID不合法', error: 'PID_NOT_EXIST', code: '424' }],
-  ['ROLE_NOT_EXIST', { message: '角色不存在', error: 'ROLE_NOT_EXIST', code: '425' }],
+  // 客户端输入错误 200+ 400+
+  ['WRONG_PASSWORD', { message: '密码输入错误', error: 'WRONG_PASSWORD', code: '221' }],
+  ['PHONENUMBER_EXIST', { message: '用户手机号已存在', error: 'WRONG_PASSWORD', code: '222' }],
+  ['USER_NOT_EXIST', { message: '用户不存在', error: 'USER_NOT_EXIST', code: '223' }],
+  ['PID_NOT_EXIST', { message: '上级ID不合法', error: 'PID_NOT_EXIST', code: '224' }],
+  ['ROLE_NOT_EXIST', { message: '角色不存在', error: 'ROLE_NOT_EXIST', code: '225' }],
   ['ROLE_NAME_EXIST', { message: '角色已存在', error: 'ROLE_NAME_EXIST', code: '426' }],
   ['REGISTER_FAILED', { message: '用户名或手机号已被注册', error: 'REGISTER_FAILED', code: '427' }],
   ['CATEGORY_NAME_EXSIT', { message: '分类名称已存在', error: 'CATEGORY_NAME_EXSIT', code: '428' }],

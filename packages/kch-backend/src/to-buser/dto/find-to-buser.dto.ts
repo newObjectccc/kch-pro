@@ -1,5 +1,5 @@
 import { ApiProperty, IntersectionType, PartialType } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { IsMobilePhone, IsNumber } from 'class-validator';
 
 export class PaginationDto {
   @ApiProperty({ default: 1 })
@@ -17,7 +17,7 @@ export class FindToBuser {
   id: number;
 
   @ApiProperty({ default: '18108370361' })
-  @IsNumber()
+  @IsMobilePhone('zh-CN')
   phoneNum: string;
 }
 

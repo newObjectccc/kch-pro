@@ -38,7 +38,7 @@ export class ToCuser {
   finishedCourseIdList: string[];
 
   @OneToMany(() => Course, (course) => course.id)
-  storedCourseIdList: string[];
+  likeCourseIdList: string[];
 
   @OneToMany(() => Order, (order) => order.id)
   orderIdList: string;

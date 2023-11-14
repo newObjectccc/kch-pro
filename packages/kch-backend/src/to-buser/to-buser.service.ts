@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
-import { comparePassword, hashPassword, isEmptyObject } from 'helpers';
+import { comparePassword, findListByPagination, hashPassword, isEmptyObject } from 'helpers';
 import { CreateToBuserDto } from 'src/to-buser/dto/create-to-buser.dto';
 import { FindListBuserDto, FindToBuserDto } from 'src/to-buser/dto/find-to-buser.dto';
 import { LoginInToBuserDto } from 'src/to-buser/dto/loginIn-to-buser.dto';
@@ -27,8 +27,7 @@ export class ToBuserService {
   }
 
   async findAll(findAllByPagination: FindListBuserDto) {
-    const { pageNo, pageSize: take, ...restParams } = findAllByPagination;
-    const res = await this.tobUserRepository.find({ skip: pageNo * take, take, where: restParams });
+    const res = await findListByPagination(findAllByPagination, this.tobUserRepository);
     return {
       code: '000',
       message: '操作成功',
@@ -38,9 +37,15 @@ export class ToBuserService {
 
   async findOne(fields: FindToBuserDto, noPwd: boolean = true) {
     if (await isEmptyObject(fields)) throw new HttpException(ERROR_MAP.get('INVALID_PARAMS'), 201);
-    const res = await this.tobUserRepository.findOneBy(fields);
+    console.log(fields);
+    let res = null;
+    const queryBuilder = this.tobUserRepository.createQueryBuilder('buser').where(fields);
+    if (noPwd) {
+      res = await queryBuilder.getOne();
+    } else {
+      res = await queryBuilder.addSelect('buser.password').getOne();
+    }
     if (!res) throw new HttpException(ERROR_MAP.get('USER_NOT_EXIST'), 201);
-    if (noPwd) delete res.password;
     return {
       code: '000',
       message: '操作成功',

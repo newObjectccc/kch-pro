@@ -18,7 +18,7 @@ export class ToBuser {
   username: string;
 
   // bcrypt -> hash
-  @Column('varchar', { length: 60 })
+  @Column('varchar', { length: 60, select: false })
   password: string;
 
   // 角色 id
