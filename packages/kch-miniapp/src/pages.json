@@ -3,8 +3,10 @@
     {
       "path": "pages/index/index",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "",
-        "navigationStyle": "custom"
+        "transparentTitle": "auto",
+        "titlePenetrate": "YES"
       }
     },
     {
@@ -31,12 +33,13 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "龙蛋学院",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#0047BB",
+    "color": "#B8B8D2",
+    "selectedColor": "#3D5CFF",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -48,20 +51,20 @@
       },
       {
         "pagePath": "pages/course/index",
-        "iconPath": "static/icons/home_unselected.png",
-        "selectedIconPath": "static/icons/home_selected.png",
+        "iconPath": "static/icons/course_unselected.png",
+        "selectedIconPath": "static/icons/course_selected.png",
         "text": "课程"
       },
       {
         "pagePath": "pages/msg/index",
-        "iconPath": "static/icons/home_unselected.png",
-        "selectedIconPath": "static/icons/home_selected.png",
+        "iconPath": "static/icons/msg_unselected.png",
+        "selectedIconPath": "static/icons/msg_selected.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/mine/index",
-        "iconPath": "static/icons/home_unselected.png",
-        "selectedIconPath": "static/icons/home_selected.png",
+        "iconPath": "static/icons/mine_unselected.png",
+        "selectedIconPath": "static/icons/mine_selected.png",
         "text": "我的"
       }
     ]
