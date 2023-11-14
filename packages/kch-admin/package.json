@@ -24,9 +24,9 @@
     ]
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "cross-env NODE_ENV=production react-scripts build",
     "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
     "test": "react-scripts test"
   },
   "dependencies": {
@@ -61,6 +61,7 @@
     "@babel/core": "^7.21.4",
     "@babel/eslint-parser": "^7.21.3",
     "@babel/preset-react": "^7.22.15",
+    "cross-env": "^7.0.3",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-react-app": "^7.0.1",
