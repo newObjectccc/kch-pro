@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
+import { Category } from 'src/category/entities/category.entity';
 
 export class CreateCategoryDto {
   @IsString()
@@ -9,4 +10,6 @@ export class CreateCategoryDto {
   // @IsNumber()
   @ApiProperty({ default: 1 })
   pid: number;
+
+  parent?: Category;
 }

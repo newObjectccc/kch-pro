@@ -33,9 +33,9 @@ export class ToBuserController {
     return this.toBuserService.remove(+id);
   }
 
-  @Post('loginIn')
+  @Post('login')
   loginIn(@Body() loginInToBuser: LoginInToBuserDto) {
-    return this.toBuserService.loginIn(loginInToBuser);
+    return this.toBuserService.login(loginInToBuser);
   }
 
   @Post('register')

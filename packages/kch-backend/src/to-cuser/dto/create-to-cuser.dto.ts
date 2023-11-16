@@ -10,10 +10,6 @@ export class CreateToCuserDto {
   @IsNotEmpty()
   realname: string;
 
-  @ApiProperty({ default: 'newkkklllooo123456' })
-  @IsNotEmpty()
-  username: string;
-
   @ApiProperty({ default: '1' })
   @IsNumber()
   roleId: number;

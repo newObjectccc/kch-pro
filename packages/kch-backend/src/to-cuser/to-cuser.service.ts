@@ -1,6 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ERROR_MAP } from 'dictionary';
+import { findListByPagination } from 'helpers';
 import { FindListBuserDto } from 'src/to-buser/dto/find-to-buser.dto';
 import { FindOneByCuserDto, SignInCuserDto } from 'src/to-cuser/dto/find-to-cuser.dto';
 import { ToCuser } from 'src/to-cuser/entities/to-cuser.entity';
@@ -24,8 +25,7 @@ export class ToCuserService {
   }
 
   async findAll(findAllByPagination: FindListBuserDto) {
-    const { pageNo, pageSize: take, ...restParams } = findAllByPagination;
-    const res = await this.tocUserRepository.find({ skip: pageNo * take, take, where: restParams });
+    const res = await findListByPagination(findAllByPagination, this.tocUserRepository);
     return {
       code: '000',
       message: '操作成功',

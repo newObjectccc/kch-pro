@@ -32,7 +32,7 @@ require('dotenv').config({ path: `./.env.${process.env.NODE_ENV ?? 'production'}
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
-      synchronize: process.env.NODE_ENV !== 'production' // 生产中勿用，否则可能丢失生产数据
+      synchronize: true //process.env.NODE_ENV !== 'production' // 生产中勿用，否则可能丢失生产数据
     }),
     ToBuserModule,
     ToCuserModule,

@@ -12,6 +12,7 @@ export default new Map([
   ['USER_NOT_EXIST', { message: '未知的用户ID', error: 'USER_NOT_EXIST', code: '430' }],
   ['UNKNOWN_ORDER_ID', { message: '未知的订单ID', error: 'UNKNOWN_ORDER_ID', code: '431' }],
   ['PAGINATION_INVALID', { message: '无效的分页查询', error: 'PAGINATION_INVALID', code: '432' }],
-  ['INVALID_PARAMS', { message: '无效的参数', error: 'INVALID_PARAMS', code: '433' }]
+  ['INVALID_PARAMS', { message: '无效的参数', error: 'INVALID_PARAMS', code: '433' }],
   // 服务器端错误 500+
+  ['PARENT_HAS_CHILDREN', { message: '父级下存在子级', error: 'PARENT_HAS_CHILDREN', code: '521' }]
 ]);

@@ -1,6 +1,10 @@
 import { Body, Controller, Delete, Param, Patch, Post } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
-import { FindAllByToCuserDto, FindOneByCuserDto } from 'src/to-cuser/dto/find-to-cuser.dto';
+import {
+  FindAllByToCuserDto,
+  FindOneByCuserDto,
+  SignInCuserDto
+} from 'src/to-cuser/dto/find-to-cuser.dto';
 import { CreateToCuserDto } from './dto/create-to-cuser.dto';
 import { UpdateToCuserDto } from './dto/update-to-cuser.dto';
 import { ToCuserService } from './to-cuser.service';
@@ -12,6 +16,11 @@ export class ToCuserController {
   @Post('register')
   register(@Body() createToCuserDto: CreateToCuserDto) {
     return this.toCuserService.register(createToCuserDto);
+  }
+
+  @Post('login')
+  login(@Body() loginCuserDto: SignInCuserDto) {
+    return this.toCuserService.login(loginCuserDto);
   }
 
   @Post('list')

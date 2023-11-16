@@ -37,7 +37,6 @@ export class ToBuserService {
 
   async findOne(fields: FindToBuserDto, noPwd: boolean = true) {
     if (await isEmptyObject(fields)) throw new HttpException(ERROR_MAP.get('INVALID_PARAMS'), 201);
-    console.log(fields);
     let res = null;
     const queryBuilder = this.tobUserRepository.createQueryBuilder('buser').where(fields);
     if (noPwd) {
@@ -71,7 +70,7 @@ export class ToBuserService {
     };
   }
 
-  async loginIn(loginInToBuserDto: LoginInToBuserDto) {
+  async login(loginInToBuserDto: LoginInToBuserDto) {
     const { password, phoneNum } = loginInToBuserDto;
     let res = null;
     let checkPassword = false;

@@ -20,9 +20,6 @@ export class FindAllByToCuserDto extends IntersectionType(
 ) {}
 
 export class FindOneByCuser {
-  @ApiProperty({ default: 'chenxinshuo' })
-  username: string;
-
   @ApiProperty({ default: '18108370361' })
   @IsMobilePhone('zh-CN')
   phoneNum: string;
@@ -34,10 +31,6 @@ export class FindOneByCuser {
 export class FindOneByCuserDto extends PartialType(FindOneByCuser) {}
 
 export class SignInCuserDto {
-  @ApiProperty({ default: 'chenxinshuo' })
-  @IsNotEmpty()
-  username: string;
-
   @ApiProperty({ default: '18108370361' })
   @IsMobilePhone('zh-CN')
   @IsNotEmpty()

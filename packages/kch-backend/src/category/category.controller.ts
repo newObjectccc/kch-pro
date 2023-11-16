@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Param, Patch, Post } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
-import { FindListCategoryDto } from 'src/category/dto/find-category.dto';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
@@ -15,8 +14,8 @@ export class CategoryController {
   }
 
   @Post('list')
-  findAll(@Body() findListCategoryDto: FindListCategoryDto) {
-    return this.categoryService.findAll(findListCategoryDto);
+  findAll() {
+    return this.categoryService.findAll();
   }
 
   @Patch(':id')

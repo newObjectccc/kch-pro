@@ -3,14 +3,26 @@ import { Course } from 'src/course/entities/course.entity';
 import { Order } from 'src/order/entities/order.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+export enum GRADE_ENUMS {
+  PRIMARY = 1,
+  MIDDLE = 2,
+  HIGH = 3,
+  UNI = 4
+}
+
 @Entity()
 export class ToCuser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Index()
-  @Column('varchar', { length: 50 })
-  username: string;
+  @Column('int')
+  gender: number;
+
+  @Column('datetime', { nullable: true })
+  birthDate: string;
+
+  @Column('int', { nullable: true })
+  grade: typeof GRADE_ENUMS;
 
   @Column('varchar', { length: 50 })
   realname: string;

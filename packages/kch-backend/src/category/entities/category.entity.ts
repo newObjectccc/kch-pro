@@ -1,14 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
 
 @Entity()
+@Tree('closure-table')
 export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('int', { nullable: true })
-  pid: number;
-
-  @Index()
   @Column('varchar', { length: 50 })
   name: string;
+
+  @TreeParent()
+  parent: Category;
+
+  @TreeChildren()
+  children: Category[];
 }
