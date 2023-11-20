@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { generateAxiosHook } from 'hooks/useAxios';
 import { useState } from 'react';
@@ -28,9 +27,9 @@ const SystemManagement = () => {
       title: '操作',
       dataIndex: '__action',
       render: (value, idx, row) => (
-        <Button variant="text" onClick={() => alert(`爱你超哥${JSON.stringify(row, null, 2)}`)}>
+        <RyButton variant="text" onClick={() => alert(`爱你超哥${JSON.stringify(row, null, 2)}`)}>
           编辑
-        </Button>
+        </RyButton>
       )
     }
   ];

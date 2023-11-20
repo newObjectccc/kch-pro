@@ -21,6 +21,13 @@ export const StyledButton = styled(Button)(({ theme, variant }) => {
         borderColor: theme.palette.secondary.main
       }
     };
+  if (variant === 'text')
+    styles = {
+      color: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.light
+      }
+    };
   return styles;
 });
 
