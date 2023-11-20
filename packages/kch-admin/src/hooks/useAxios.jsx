@@ -1,6 +1,5 @@
 import axios from 'http';
-import { useEffect, useReducer } from 'react';
-console.log(process.env.NODE_ENV, 'Running');
+import { useEffect, useMemo, useReducer } from 'react';
 
 const ACTION_TYPE = {
   LOADING: 'loading',
@@ -9,8 +8,7 @@ const ACTION_TYPE = {
 };
 
 const reducer = (state, action) => {
-  console.log(state, action);
-  let mergedState = state;
+  let mergedState = { ...state };
   switch (action.type) {
     case ACTION_TYPE.LOADING:
       mergedState.loading = action.value;
@@ -37,25 +35,28 @@ export const useAxios = (options) => {
       try {
         res = await axios.request(options);
       } catch (err) {
-        return dispatch({
-          type: ACTION_TYPE.ERROR,
-          value: { code: '400', message: '前端错误', error: err }
-        });
+        res = err.response.data ?? err;
       }
       dispatch({ type: ACTION_TYPE.LOADING, value: false });
-      if (res?.code !== '000') {
-        return dispatch({ type: ACTION_TYPE.DATA, value: res });
+      if (res?.data?.code === '000') {
+        return dispatch({ type: ACTION_TYPE.DATA, value: res.data });
       }
       dispatch({ type: ACTION_TYPE.ERROR, value: res });
     };
     httpReq();
   }, [options]);
 
-  return {
-    error: state.error,
-    loading: state.loading,
-    data: state.data
-    // abort: state.abort,
-    // abortHandler: useCallback(() => {}, [])
-  };
+  return state;
 };
+
+export const generateAxiosHook =
+  (method, url, options = {}) =>
+  (params) => {
+    const allOpts = useMemo(() => {
+      const normalized = { method, url, ...options };
+      if (method === 'get') normalized.params = params;
+      if (method === 'post') normalized.data = params;
+      return normalized;
+    }, [params]);
+    return useAxios(allOpts);
+  };

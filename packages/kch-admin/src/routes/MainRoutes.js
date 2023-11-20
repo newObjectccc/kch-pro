@@ -4,6 +4,17 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 
+// category routing
+const CategoryManagement = Loadable(lazy(() => import('views/pages/category/CategoryMain')));
+// resource routing
+const ResourceManagement = Loadable(lazy(() => import('views/pages/resource/ResourceMain')));
+// course routing
+const CourseManagement = Loadable(lazy(() => import('views/pages/course/CourseMain')));
+// student routing
+const StudentManagement = Loadable(lazy(() => import('views/pages/student/StudentMain')));
+// system routing
+const SystemMember = Loadable(lazy(() => import('views/pages/system/SystemMember')));
+
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -13,9 +24,6 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-
-// sample page routing
-const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -33,6 +41,51 @@ const MainRoutes = {
         {
           path: 'default',
           element: <DashboardDefault />
+        }
+      ]
+    },
+    {
+      path: 'pages/category',
+      children: [
+        {
+          path: 'index',
+          element: <CategoryManagement />
+        }
+      ]
+    },
+    {
+      path: 'pages/resource',
+      children: [
+        {
+          path: 'index',
+          element: <ResourceManagement />
+        }
+      ]
+    },
+    {
+      path: 'pages/course',
+      children: [
+        {
+          path: 'index',
+          element: <CourseManagement />
+        }
+      ]
+    },
+    {
+      path: 'pages/student',
+      children: [
+        {
+          path: 'index',
+          element: <StudentManagement />
+        }
+      ]
+    },
+    {
+      path: 'pages/system',
+      children: [
+        {
+          path: 'member',
+          element: <SystemMember />
         }
       ]
     },
@@ -80,10 +133,6 @@ const MainRoutes = {
           element: <UtilsMaterialIcons />
         }
       ]
-    },
-    {
-      path: 'sample-page',
-      element: <SamplePage />
     }
   ]
 };

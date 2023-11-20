@@ -1,5 +1,5 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
+import { IconPalette, IconShadow, IconTypography, IconWindmill } from '@tabler/icons';
 
 // constant
 const icons = {
@@ -13,8 +13,9 @@ const icons = {
 
 const utilities = {
   id: 'utilities',
-  title: 'Utilities',
+  title: '页面UI工具',
   type: 'group',
+  caption: '网页页面主题相关工具',
   children: [
     {
       id: 'util-typography',

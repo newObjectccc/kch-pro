@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 const BASEURL_ENV_MAP = {
   production: 'http://47.108.164.241/api',
-  development: 'http://47.108.164.241/api'
+  development: 'http://localhost/api'
 };
 
 const axios = Axios.create({
