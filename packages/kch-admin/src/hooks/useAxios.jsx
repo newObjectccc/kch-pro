@@ -28,25 +28,28 @@ const reducer = (state, action) => {
 export const useAxios = (options) => {
   const [state, dispatch] = useReducer(reducer, { error: null, loading: false, data: null });
 
+  const httpReq = async (orParams) => {
+    let res = null;
+    dispatch({ type: ACTION_TYPE.LOADING, value: true });
+    try {
+      if (orParams) options = { ...options, ...orParams };
+      res = await axios.request(options);
+    } catch (err) {
+      res = err.response.data ?? err;
+    }
+    dispatch({ type: ACTION_TYPE.LOADING, value: false });
+    if (res?.data?.code === '000') {
+      return dispatch({ type: ACTION_TYPE.DATA, value: res.data });
+    }
+    dispatch({ type: ACTION_TYPE.ERROR, value: res });
+  };
+
   useEffect(() => {
-    const httpReq = async () => {
-      let res = null;
-      dispatch({ type: ACTION_TYPE.LOADING, value: true });
-      try {
-        res = await axios.request(options);
-      } catch (err) {
-        res = err.response.data ?? err;
-      }
-      dispatch({ type: ACTION_TYPE.LOADING, value: false });
-      if (res?.data?.code === '000') {
-        return dispatch({ type: ACTION_TYPE.DATA, value: res.data });
-      }
-      dispatch({ type: ACTION_TYPE.ERROR, value: res });
-    };
     httpReq();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options]);
 
-  return state;
+  return { ...state, requestHandler: (orParams) => httpReq(orParams) };
 };
 
 export const generateAxiosHook =

@@ -11,12 +11,20 @@ export const StyledInput = styled(TextField)(({ theme, variant }) => {
     '& .MuiInput-underline:after': {
       borderBottomColor: theme.palette.secondary.main
     },
+    '& .MuiInputLabel-root': {
+      '&.Mui-error': {
+        color: theme.palette.error.main
+      }
+    },
     '& .MuiOutlinedInput-root': {
       '&:hover fieldset': {
         borderColor: theme.palette.secondary.main
       },
       '&.Mui-focused fieldset': {
         borderColor: theme.palette.secondary.main
+      },
+      '&.Mui-error fieldset': {
+        borderColor: theme.palette.error.main
       }
     }
   };
