@@ -29,7 +29,6 @@ export class ProxyMiddleware implements NestMiddleware {
         return modifyBody;
       }
     };
-    console.log(req.url);
     if (!/^\/api/.test(req.url)) {
     }
     const proxyMiddleware = proxy(proxyUrl, proxyOptions);

@@ -1,5 +1,5 @@
 import { HttpException } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { ERROR_MAP } from 'dictionary';
 import { PaginationDto } from 'src/to-buser/dto/find-to-buser.dto';
 import { Repository } from 'typeorm';
