@@ -8,6 +8,6 @@ require('dotenv').config({
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true, bodyParser: false });
   app.useGlobalFilters(new HttpExceptionFilter());
-  await app.listen(process.env.SERVER_EXPOSE_PORT ?? 443);
+  await app.listen(process.env.SERVER_EXPOSE_PORT ?? 80);
 }
 bootstrap();
