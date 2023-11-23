@@ -19,7 +19,7 @@
         </div>
         <div class="coures-tabsContent">
           <div class="coures-tabsContentCard" v-for="item in cardList" :key="item.name">
-            <div class="coures-tabsCardLeft"></div>
+            <img src="../../imgs/Image.png" class="coures-tabsCardLeft">
             <div class="coures-tabsCardRight">
               <div class="coures-tabsCardTop">
                 <p>{{ item.name }}</p>
