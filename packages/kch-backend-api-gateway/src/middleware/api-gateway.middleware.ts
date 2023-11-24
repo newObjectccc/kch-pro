@@ -9,13 +9,9 @@ import SIGN_API from '../utils/signApi';
 export class ProxyMiddleware implements NestMiddleware {
   constructor(private authService: AuthService) {}
   async use(req: Request, res: Response, next: NextFunction) {
-    const proxyUrl = `localhost:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`;
+    const proxyUrl = `http://127.0.0.1:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`;
     const proxyOptions = {
-      proxyReqPathResolver: (req) => {
-        console.log(req.originalUrl.replace('/api', ''));
-
-        return req.originalUrl.replace('/api', '');
-      }, // 设置代理请求路径
+      proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
       proxyReqBodyDecorator: async (bodyContent, srcReq) => {
         if (NO_VERIFY_API.includes(req.url) || SIGN_API.includes(req.url)) return bodyContent;
         // 验证 jwt token
@@ -33,6 +29,7 @@ export class ProxyMiddleware implements NestMiddleware {
         return modifyBody;
       }
     };
+    console.log(req.url);
     if (!/^\/api/.test(req.url)) {
     }
     const proxyMiddleware = proxy(proxyUrl, proxyOptions);
