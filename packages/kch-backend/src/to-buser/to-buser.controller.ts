@@ -13,6 +13,7 @@ export class ToBuserController {
 
   @Post('list')
   findAll(@Body() findAllToBuserDto: FindListBuserDto) {
+    console.log(findAllToBuserDto);
     return this.toBuserService.findAll(findAllToBuserDto);
   }
 

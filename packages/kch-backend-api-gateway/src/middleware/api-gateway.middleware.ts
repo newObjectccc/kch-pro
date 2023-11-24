@@ -11,7 +11,11 @@ export class ProxyMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     const proxyUrl = `localhost:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`;
     const proxyOptions = {
-      proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
+      proxyReqPathResolver: (req) => {
+        console.log(req.originalUrl.replace('/api', ''));
+
+        return req.originalUrl.replace('/api', '');
+      }, // 设置代理请求路径
       proxyReqBodyDecorator: async (bodyContent, srcReq) => {
         if (NO_VERIFY_API.includes(req.url) || SIGN_API.includes(req.url)) return bodyContent;
         // 验证 jwt token
