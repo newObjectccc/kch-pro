@@ -16,6 +16,8 @@ export class ProxyMiddleware implements NestMiddleware {
         if (NO_VERIFY_API.includes(req.url) || SIGN_API.includes(req.url)) return bodyContent;
         // 验证 jwt token
         const payload = await this.authService.verifyTokenToUserInfo(req);
+        console.log(payload, 'payload');
+
         if (!payload) throw new UnauthorizedException();
         // 需要用户信息的api，可以建一个needUserInfoApiList，修改 bodyContent
         return bodyContent;
