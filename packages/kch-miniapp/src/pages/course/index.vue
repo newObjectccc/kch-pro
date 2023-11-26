@@ -14,11 +14,11 @@
       </div>
       <div class="coures-tabs">
         <div class="coures-tabsTop">
-          <div :class="item.type === tab ? 'tabs-title' : 'tabs-titleActive'" v-for="item in tabList" :key="item.type"
-            @onclick="tabcheckout(item.type)">{{ item.name }}</div>
+          <div :class="item.type === tab ? 'tabs-title' : 'tabs-titleActive'" v-for="item in tabList"
+            :key="item.type" @click="tabcheckout(item.type)">{{ item.name }}</div>
         </div>
         <div class="coures-tabsContent">
-          <div class="coures-tabsContentCard" v-for="item in cardList" :key="item.name">
+          <div class="coures-tabsContentCard" v-for="item in cardList" :key="item.name" @click="courseDetails">
             <img src="../../imgs/Image.png" class="coures-tabsCardLeft">
             <div class="coures-tabsCardRight">
               <div class="coures-tabsCardTop">
@@ -40,9 +40,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, withCtx } from 'vue';
 const name = ref('课程列表');
-let tab = 'all'
+const AuthorizeRef = ref();
+let tab = ref('all')
 const tabList = [
   { name: '全部', type: 'all' },
   { name: '科学研讨', type: 'scientific' },
@@ -53,7 +54,16 @@ const cardList = [
   { name: '营养健康老师教学课程2', pice: '289', remark: '这是一句话简介的位置就是这么长久是', teacher: '陈老师', position: '师大副教授', collect: '4.4k' },
   { name: '营养健康老师教学课程3', pice: '299', remark: '这是一句话简介的位置就是这么长久是', teacher: '管老师', position: '师大副教授', collect: '4.3k' },
 ]
+//tab切换
 const tabcheckout = (type: any) => {
+  tab.value = type
+  console.log(tab)
+
+}
+//课程跳转
+const courseDetails = () => {
+  // uni.switchTab({url:'/pages/msg/index'})
+  uni.navigateTo({url:'/pages/introduction/index'})
 }
 </script>
 
@@ -227,4 +237,5 @@ const tabcheckout = (type: any) => {
       }
     }
   }
-}</style>
+}
+</style>

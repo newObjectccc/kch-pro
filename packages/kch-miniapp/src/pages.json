@@ -28,6 +28,13 @@
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/introduction/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {
@@ -54,6 +61,12 @@
         "selectedIconPath": "static/icons/course_selected.png",
         "text": "课程"
       },
+      // {
+      //   "pagePath": "pages/introduction/index",
+      //   "iconPath": "static/icons/course_unselected.png",
+      //   "selectedIconPath": "static/icons/course_selected.png",
+      //   "text": "课程"
+      // },
       {
         "pagePath": "pages/msg/index",
         "iconPath": "static/icons/msg_unselected.png",
