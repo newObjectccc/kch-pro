@@ -9,7 +9,7 @@ import SIGN_API from '../utils/signApi';
 export class ProxyMiddleware implements NestMiddleware {
   constructor(private authService: AuthService) {}
   async use(req: Request, res: Response, next: NextFunction) {
-    let proxyUrl = `http://cqbackend:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`;
+    let proxyUrl = `http://cqbackend:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`; // 特别注意一下这里，cqbackend 是 docker-compose.yml 部署的 service 的服务名，需要docker network中需要这样去访问才可以
     const proxyOptions = {
       proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
       proxyReqBodyDecorator: async (bodyContent, srcReq) => {

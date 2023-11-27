@@ -9,7 +9,7 @@ services:
   cqapigateway:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
     ports:
-      - '3001:3001'
+      - '80:80'
     depends_on:
       - cqbackend
   db:
