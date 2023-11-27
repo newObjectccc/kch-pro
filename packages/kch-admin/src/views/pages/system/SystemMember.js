@@ -1,5 +1,6 @@
 import Stack from '@mui/material/Stack';
 import { generateAxiosHook } from 'hooks/useAxios';
+import useMounted from 'hooks/useMounted';
 import { useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import TotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -17,8 +18,22 @@ const useStudent = generateAxiosHook('post', '/to-buser/list');
 
 const SystemManagement = () => {
   const [formValues, setFormValues] = useState({ id: '', username: '', phoneNum: '' });
-  const [params, setParams] = useState({ pageNo: 1, pageSize: 20 });
-  const { data, loading, error } = useStudent(params);
+  const { data, loading, error, requestHandler } = useStudent();
+
+  const searchHandler = () => {
+    if (Object.keys(formValues).find((key) => !['id', 'username', 'phoneNum'].includes(key)))
+      return;
+    const normalized = { ...formValues, pageNo: 1, pageSize: 20 };
+    // eslint-disable-next-line array-callback-return
+    Object.entries(formValues).map(([key, val]) => {
+      if (!isValidValue(val)) delete normalized[key];
+    });
+    requestHandler(normalized);
+  };
+
+  useMounted(() => {
+    searchHandler();
+  });
 
   if (loading) return <TotalGrowthBarChart />;
   if (error) return <div>error</div>;
@@ -51,15 +66,6 @@ const SystemManagement = () => {
     }
     if (isValidNumber(val.id)) validationVal.id = parseInt(val.id);
     setFormValues(validationVal);
-  };
-
-  const searchHandler = () => {
-    const normalized = { ...formValues, pageNo: 1, pageSize: 20 };
-    // eslint-disable-next-line array-callback-return
-    Object.entries(formValues).map(([key, val]) => {
-      if (!isValidValue(val)) delete normalized[key];
-    });
-    setParams(normalized);
   };
 
   const resetParams = () => {

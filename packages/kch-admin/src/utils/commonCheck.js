@@ -19,6 +19,12 @@ export const isValidValue = (val) => {
   return true;
 };
 
+export const isValidArray = (arr) => {
+  if (!Array.isArray(arr)) return false;
+  if (isEmptyArray(arr)) return false;
+  return true;
+};
+
 export const isEmptyObject = (obj) => {
   if (typeToString(obj) !== 'object') return false;
   if (obj.toString() !== '{}') return false;
@@ -27,8 +33,8 @@ export const isEmptyObject = (obj) => {
 
 export const isEmptyArray = (arr) => {
   if (typeToString(arr) !== 'array') return false;
-  if (arr.filter((i) => i).length <= 0) return false;
-  return true;
+  if (arr.filter((i) => i !== void 0).length <= 0) return true;
+  return false;
 };
 
 export const isValidNumber = (num) => {
