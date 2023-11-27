@@ -6,6 +6,36 @@ services:
       - '3000:3000'
     depends_on:
       - db
+  cqbackend2:
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-backend:latest
+    ports:
+      - '3001:3001'
+    depends_on:
+      - db
+  cqbackend3:
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-backend:latest
+    ports:
+      - '3002:3002'
+    depends_on:
+      - db
+  cqbackend4:
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-backend:latest
+    ports:
+      - '3003:3003'
+    depends_on:
+      - db
+  nginx:
+    image: nginx
+    ports:
+      - '81:81'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - cqapigateway
+      - cqbackend
+      - cqbackend2
+      - cqbackend3
+      - cqbackend4
   cqapigateway:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
     ports:
