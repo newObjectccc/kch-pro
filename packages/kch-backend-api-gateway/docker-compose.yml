@@ -1,8 +1,23 @@
 version: '3'
 services:
-  apigateway:
-    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/kch-apigateway:latest
+  cqbackend:
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-backend:latest
     ports:
-      - '80:80'
-# 这个 docker-compose.yml 并没有用，但依然建议维护
-# 在服务器上有维护，如果此配置有修改，请手动复制到服务器部署目录下的yml文件中
+      - '3000:3000'
+    depends_on:
+      - db
+  cqapigateway:
+    image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
+    ports:
+      - '3001:3001'
+    depends_on:
+      - cqbackend
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: kch_database
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
