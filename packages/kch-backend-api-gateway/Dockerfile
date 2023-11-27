@@ -10,6 +10,6 @@ RUN npm install -g pnpm
 RUN pnpm install
 RUN npm run build
 
-EXPOSE 80
+EXPOSE 3001
 
 CMD ["pnpm", "-F", "kch-backend-api-gateway", "start:prod"]
