@@ -7,7 +7,6 @@ export class AuthService {
 
   async verifyTokenToUserInfo(req: Request): Promise<object | undefined> {
     const token = this.extractTokenFromHeader(req);
-    console.log(token, 'token');
 
     if (!token) throw new UnauthorizedException();
     let payload;
@@ -22,7 +21,6 @@ export class AuthService {
   }
 
   extractTokenFromHeader(req: Request): string | undefined {
-    console.log((req.headers as any).authorization?.split(' '), 'req.headers');
     const [type, token] = (req.headers as any).authorization?.split(' ') ?? [];
     return type === 'Bearer' ? token : undefined;
   }

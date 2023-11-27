@@ -5,18 +5,18 @@ import { AuthService } from 'src/auth/auth.service';
 import NO_VERIFY_API from '../utils/noVerifyApi';
 import SIGN_API from '../utils/signApi';
 
+const serviceUrl = process.env.NODE_ENV !== 'production' ? 'localhost' : 'cqbackend';
 @Injectable()
 export class ProxyMiddleware implements NestMiddleware {
   constructor(private authService: AuthService) {}
   async use(req: Request, res: Response, next: NextFunction) {
-    let proxyUrl = `http://cqbackend:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`; // 特别注意一下这里，cqbackend 是 docker-compose.yml 部署的 service 的服务名，需要docker network中需要这样去访问才可以
+    let proxyUrl = `http://${serviceUrl}:${process.env.API_SERVER_EXPOSE_PORT ?? 3000}`; // 特别注意一下这里，cqbackend 是 docker-compose.yml 部署的 service 的服务名，需要docker network中需要这样去访问才可以
     const proxyOptions = {
       proxyReqPathResolver: (req) => req.originalUrl.replace('/api', ''), // 设置代理请求路径
       proxyReqBodyDecorator: async (bodyContent, srcReq) => {
         if (NO_VERIFY_API.includes(req.url) || SIGN_API.includes(req.url)) return bodyContent;
         // 验证 jwt token
         const payload = await this.authService.verifyTokenToUserInfo(req);
-        console.log(payload, 'payload');
 
         if (!payload) throw new UnauthorizedException();
         // 需要用户信息的api，可以建一个needUserInfoApiList，修改 bodyContent
@@ -32,7 +32,6 @@ export class ProxyMiddleware implements NestMiddleware {
       }
     };
     let proxyMiddleware = null;
-    console.log(req.url);
     if (!/^\/api/.test(req.url)) {
       proxyUrl = `http://127.0.0.1:${process.env.FRONTEND_SERVER_EXPOSE_PORT ?? 8080}`;
       proxyMiddleware = proxy(proxyUrl);
