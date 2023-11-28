@@ -14,11 +14,11 @@ import {
   isValidValue
 } from 'utils/commonCheck';
 
-const useStudent = generateAxiosHook('post', '/to-buser/list');
+const useAdmin = generateAxiosHook('post', '/to-buser/list');
 
 const SystemManagement = () => {
   const [formValues, setFormValues] = useState({ id: '', username: '', phoneNum: '' });
-  const { data, loading, error, requestHandler } = useStudent();
+  const { data, loading, error, request } = useAdmin();
 
   const searchHandler = () => {
     if (Object.keys(formValues).find((key) => !['id', 'username', 'phoneNum'].includes(key)))
@@ -28,7 +28,7 @@ const SystemManagement = () => {
     Object.entries(formValues).map(([key, val]) => {
       if (!isValidValue(val)) delete normalized[key];
     });
-    requestHandler(normalized);
+    request(normalized);
   };
 
   useMounted(() => {
@@ -125,7 +125,7 @@ const SystemManagement = () => {
           重置
         </RyButton>
       </Stack>
-      <RyTable columns={columns} dataSource={data?.data} />
+      <RyTable columns={columns} dataSource={data} />
     </MainCard>
   );
 };

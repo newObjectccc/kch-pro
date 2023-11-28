@@ -8,6 +8,18 @@ import Loadable from 'ui-component/Loadable';
 const CategoryManagement = Loadable(lazy(() => import('views/pages/category/CategoryMain')));
 // resource routing
 const ResourceManagement = Loadable(lazy(() => import('views/pages/resource/ResourceMain')));
+const VideoResourceManagement = Loadable(
+  lazy(() => import('views/pages/resource/video/VideoResource'))
+);
+const ImageResourceManagement = Loadable(
+  lazy(() => import('views/pages/resource/image/ImageResource'))
+);
+const CoursewareResourceManagement = Loadable(
+  lazy(() => import('views/pages/resource/courseware/CoursewareResource'))
+);
+const CerificateResourceManagement = Loadable(
+  lazy(() => import('views/pages/resource/certificate/CertificateResource'))
+);
 // course routing
 const CourseManagement = Loadable(lazy(() => import('views/pages/course/CourseMain')));
 // student routing
@@ -59,6 +71,22 @@ const MainRoutes = {
         {
           path: 'index',
           element: <ResourceManagement />
+        },
+        {
+          path: 'video',
+          element: <VideoResourceManagement />
+        },
+        {
+          path: 'image',
+          element: <ImageResourceManagement />
+        },
+        {
+          path: 'courseware',
+          element: <CoursewareResourceManagement />
+        },
+        {
+          path: 'cerificate',
+          element: <CerificateResourceManagement />
         }
       ]
     },

@@ -39,12 +39,16 @@ export const useAxios = (options) => {
     }
     dispatch({ type: ACTION_TYPE.LOADING, value: false });
     if (res?.data?.code === '000') {
-      return dispatch({ type: ACTION_TYPE.DATA, value: res.data });
+      return dispatch({ type: ACTION_TYPE.DATA, value: res.data?.data });
     }
     dispatch({ type: ACTION_TYPE.ERROR, value: res });
   };
 
-  return { ...state, requestHandler: (orParams) => httpReq(orParams) };
+  return {
+    ...state,
+    request: (orParams) => httpReq(orParams),
+    update: (val) => dispatch({ type: ACTION_TYPE.DATA, value: val })
+  };
 };
 
 export const generateAxiosHook =

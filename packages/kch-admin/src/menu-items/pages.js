@@ -51,6 +51,30 @@ const pages = {
           title: '资源管理',
           type: 'item',
           url: '/pages/resource/index'
+        },
+        {
+          id: 'video',
+          title: '视频管理',
+          type: 'item',
+          url: '/pages/resource/video'
+        },
+        {
+          id: 'image',
+          title: '图片管理',
+          type: 'item',
+          url: '/pages/resource/image'
+        },
+        {
+          id: 'courseware',
+          title: '课件管理',
+          type: 'item',
+          url: '/pages/resource/courseware'
+        },
+        {
+          id: 'cerificate',
+          title: '证书管理',
+          type: 'item',
+          url: '/pages/resource/cerificate'
         }
       ]
     },

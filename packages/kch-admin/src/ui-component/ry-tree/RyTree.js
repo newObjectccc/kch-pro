@@ -23,10 +23,12 @@ const StyledExpandMore = (props) =>
 const StyledExpandLess = (props) =>
   React.createElement(ExpandLess, { sx: { ml: (theme) => theme.spacing(1) }, ...props });
 
-const StyledListItemButton = (props) =>
-  React.createElement(ListItemButton, { sx: { width: '300px', position: 'relative' }, ...props });
+const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
+  position: 'relative',
+  width: '300px'
+}));
 
-const StyledList = styled(List)(({ theme }) => ({
+const StyledList = styled(List)(({ theme, active }) => ({
   '& .MuiList-root': {
     padding: '0'
   }
@@ -99,6 +101,7 @@ function RyTree(props) {
     onRemove,
     onEdit,
     rowAction,
+    onRowClick,
     children
   } = props;
 
@@ -117,13 +120,13 @@ function RyTree(props) {
   };
 
   // recursion render
-  const renderHandler = (item, listItemProps, listProps) => {
+  const renderHandler = (item, listItemProps) => {
     const isValidArr = isValidArray(item?.children);
     if (isValidArr) item.isCollapsed = item.isCollapsed || false;
     if (checked) item.isChecked = item.isChecked || false;
     return (
       <div key={item.id}>
-        <StyledListItemButton {...listItemProps}>
+        <StyledListItemButton {...listItemProps} onClick={() => onRowClick?.(item)}>
           <StyledListItemIcon>
             {checked ? (
               <Checkbox
@@ -152,11 +155,11 @@ function RyTree(props) {
         </StyledListItemButton>
         {isValidArr ? (
           <StyledCollapse in={item.isCollapsed}>
-            <List {...listProps}>
+            <StyledList>
               {item.children.map((i) => {
-                return renderHandler(i, listItemProps, listProps);
+                return renderHandler(i, listItemProps);
               })}
-            </List>
+            </StyledList>
           </StyledCollapse>
         ) : null}
       </div>
@@ -165,7 +168,7 @@ function RyTree(props) {
 
   return (
     <StyledList {...listProps}>
-      {Array.isArray(value) && value.map((item) => renderHandler(item, listItemProps, listProps))}
+      {Array.isArray(value) && value.map((item) => renderHandler(item, listItemProps))}
     </StyledList>
   );
 }
@@ -178,6 +181,7 @@ RyTree.propTypes = {
   onChange: PropTypes.func,
   onRemove: PropTypes.func,
   onEdit: PropTypes.func,
+  onRowClick: PropTypes.func,
   checked: PropTypes.bool,
   rowAction: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
 };
