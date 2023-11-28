@@ -1,5 +1,6 @@
 <template>
     <view class="introduction-content">
+        <img src="../../imgs/vector.png" class="vectorImg" @click="back">
         <div class="introduction-top">
             <div class="top-left">
                 <div class="left-hot">热门课程</div>
@@ -56,8 +57,16 @@ const name = '我的课程'
 const courseTime = [
     { title: '认识自己', time: '6:10' },
     { title: '如何成长', time: '9:10' },
+    { title: '探索与发现', time: '10:10' },
+    { title: '认识自己', time: '6:10' },
+    { title: '如何成长', time: '9:10' },
     { title: '探索与发现', time: '10:10' }
 ]
+const back = () => {
+    uni.navigateBack({
+        delta: 1
+    });
+}
 </script>
 <style lang="scss" scoped>
 .introduction-content {
@@ -66,6 +75,14 @@ const courseTime = [
     height: 100vh;
     padding-top: 134rpx;
     background: rgba(255, 235, 240, 1);
+
+    .vectorImg {
+        width: 14rpx;
+        height: 28rpx;
+        position: absolute;
+        top: 116rpx;
+        left: 50rpx;
+    }
 
     .introduction-top {
         padding: 0 40rpx;
@@ -197,6 +214,8 @@ const courseTime = [
 
             .bady-time {
                 width: 100%;
+                height: 400rpx;
+                overflow: scroll;
                 margin-top: 40rpx;
 
                 .time-card {
@@ -276,6 +295,7 @@ const courseTime = [
             justify-content: space-between;
             position: absolute;
             bottom: 0;
+            background-color: rgb(255, 255, 255);
 
             .foot-collect {
                 width: 178rpx;
@@ -285,7 +305,8 @@ const courseTime = [
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                .button-collect{
+
+                .button-collect {
                     width: 37rpx;
                     height: 34rpx;
                 }

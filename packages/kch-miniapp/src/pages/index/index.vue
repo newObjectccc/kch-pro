@@ -17,7 +17,7 @@
           <p>46分钟</p>
           <p style="color: rgba(133,133,151,1);font-size: 20rpx;">/60分钟</p>
         </div>
-        <div class="cardFoot"></div>
+        <ProgressBar :width="width" :color="color" />
       </div>
     </div>
     <div class="home-body">
@@ -50,6 +50,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import ProgressBar from '../../components/progressBar/index.vue';
+const width = ref<string>('50%')
+const color = ref<string>('rgba(255, 81, 6, 1)')
 const title = ref('Hello');
 const cardList = [
   { name: '营养健康老师教学课程1', pice: '288', remark: '这是一句话简介的位置就是这么长久是', teacher: '李老师', position: '师大副教授', collect: '4.5k' },
@@ -64,7 +67,6 @@ const cardList = [
   width: 100%;
   height: 100vh;
 
-  // background-color: #3d5cff;
   .home-top {
     width: 100%;
     height: 400rpx;
@@ -129,11 +131,6 @@ const cardList = [
         align-items: baseline;
       }
 
-      .cardFoot {
-        width: 100%;
-        height: 12rpx;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 81, 6, 1) 100%);
-      }
     }
   }
 
@@ -187,7 +184,7 @@ const cardList = [
         height: 190rpx;
         opacity: 1;
         border-radius: 24rpx;
-        background: rgb(255, 255, 255,1);
+        background: rgb(255, 255, 255, 1);
         box-shadow: 0px 16rpx 24rpx rgba(184, 184, 210, 0.2);
         padding: 0 24rpx;
         display: flex;
@@ -236,4 +233,5 @@ const cardList = [
 
     }
   }
-}</style>
+}
+</style>

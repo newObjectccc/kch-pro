@@ -2,7 +2,9 @@
   <view class="course-container">
     <div class="course-topTitle">{{ name }}</div>
     <div class="course-content">
-      <div class="coures-serch">查找课程
+      <div class="coures-serch">
+        <img src="../../imgs/search.png" class="imgSerch">
+        <p>查找课程</p>
       </div>
       <div class="course-card">
         <div class="course-cardLeft">
@@ -14,8 +16,8 @@
       </div>
       <div class="coures-tabs">
         <div class="coures-tabsTop">
-          <div :class="item.type === tab ? 'tabs-title' : 'tabs-titleActive'" v-for="item in tabList"
-            :key="item.type" @click="tabcheckout(item.type)">{{ item.name }}</div>
+          <div :class="item.type === tab ? 'tabs-title' : 'tabs-titleActive'" v-for="item in tabList" :key="item.type"
+            @click="tabcheckout(item.type)">{{ item.name }}</div>
         </div>
         <div class="coures-tabsContent">
           <div class="coures-tabsContentCard" v-for="item in cardList" :key="item.name" @click="courseDetails">
@@ -63,7 +65,7 @@ const tabcheckout = (type: any) => {
 //课程跳转
 const courseDetails = () => {
   // uni.switchTab({url:'/pages/msg/index'})
-  uni.navigateTo({url:'/pages/introduction/index'})
+  uni.navigateTo({ url: '/pages/introduction/index' })
 }
 </script>
 
@@ -98,8 +100,15 @@ const courseDetails = () => {
       font-family: '黑体';
       font-weight: 500;
       color: rgba(184, 184, 210, 1);
-      padding: 0 32rpx;
-      line-height: 96rpx;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .imgSerch {
+        width: 32rpx;
+        height: 32rpx;
+        margin-left: 32rpx;
+        margin-right: 26rpx;
+      }
     }
 
     .course-card {

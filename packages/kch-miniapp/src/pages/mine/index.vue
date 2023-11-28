@@ -6,7 +6,7 @@
     </view>
     <kch-authorizePhoneNumber ref="AuthorizeRef" />
     <div class="mine-collect">
-      <div class="min-collect-content" ref="AuthorizeRef" v-for="item in collectList" :key="item.type">
+      <div class="min-collect-content" ref="AuthorizeRef" v-for="item in collectList" :key="item.type" @click="myCourse(item.type)">
         <div class="min-icon"></div>
         <div>{{ item.value }}</div>
         <div style="font-weight: 400;">{{ item.name }}</div>
@@ -48,6 +48,13 @@ const collectList = [
 const login = () => {
   AuthorizeRef.value.open();
 };
+const myCourse = (item:any) => {
+  console.log(item)
+  if(item === 'course'){
+    uni.navigateTo({ url: '/pages/mycourse/index'})
+  }
+    // uni.switchTab({url:'/pages/msg/index'})
+  }
 </script>
 
 <style lang="scss" scoped>
