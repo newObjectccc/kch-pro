@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import useCategory from 'hooks/useCategory';
-import useCertificate from 'hooks/useCertificate';
 import useMounted from 'hooks/useMounted';
+import useResource from 'hooks/useResource';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
@@ -15,31 +15,33 @@ import RyTree from 'ui-component/ry-tree/RyTree';
 const mockTableData = [
   {
     name: '',
-    time: '',
+    format: '',
+    size: '',
     createdBy: '',
     createdAt: ''
   },
   {
     name: '',
-    time: '',
+    format: '',
+    size: '',
     createdBy: '',
     createdAt: ''
   }
 ];
 
 function CertificateResource(props) {
-  const { data: videoList, loading, error, request: getVideo } = useCertificate();
+  const { data: certificateList, loading, error, request: getCertificate } = useResource();
   const { data: categoryList, request: getCategory, update: updateCategory } = useCategory();
-  const [videoName, setVideoName] = useState('');
+  const [certificateName, setCertificateName] = useState('');
   const [currentCategory, setCurrentCategory] = useState({});
 
   const searchHandler = (imParam = {}) => {
     const params = {
-      name: videoName ? videoName : undefined,
+      name: certificateName ? certificateName : undefined,
       categoryId: currentCategory.id ? currentCategory.id : undefined,
       ...imParam
     };
-    getVideo(params);
+    getCertificate(params);
   };
 
   useMounted(() => {
@@ -61,11 +63,12 @@ function CertificateResource(props) {
     console.log(type, row);
   };
 
-  const resetParams = () => setVideoName('');
+  const resetParams = () => setCertificateName('');
 
   const columns = [
-    { title: '视频名称', dataIndex: 'name' },
-    { title: '视频时长', dataIndex: 'time' },
+    { title: '证书名称', dataIndex: 'name' },
+    { title: '证书格式', dataIndex: 'format' },
+    { title: '证书大小', dataIndex: 'size' },
     { title: '创建人', dataIndex: 'createdBy' },
     { title: '创建时间', dataIndex: 'createdAt' },
     {
@@ -108,12 +111,12 @@ function CertificateResource(props) {
         </Grid>
         <Grid item xs={9}>
           <Stack direction="row" mb={2}>
-            视频&nbsp;&nbsp;|&nbsp;&nbsp;{currentCategory.name}
+            证书&nbsp;&nbsp;|&nbsp;&nbsp;{currentCategory.name}
           </Stack>
           <Stack direction="row" justifyContent="space-between" mb={2}>
             <Stack direction="row" spacing={2}>
               <RyButton sx={{ height: '100%' }} variant="contained" onClick={searchHandler}>
-                上传视频
+                上传证书
               </RyButton>
               <RyButton sx={{ height: '100%' }} variant="outlined" onClick={resetParams}>
                 删除
@@ -121,11 +124,11 @@ function CertificateResource(props) {
             </Stack>
             <Stack direction="row" spacing={2}>
               <RyInput
-                label="视频名称"
+                label="证书名称"
                 size="small"
-                placeholder="输入视频名称查询"
-                value={videoName}
-                onChange={(evt) => setVideoName(evt.target.value)}
+                placeholder="输入证书名称查询"
+                value={certificateName}
+                onChange={(evt) => setCertificateName(evt.target.value)}
               />
               <RyButton sx={{ height: '100%' }} variant="contained" onClick={searchHandler}>
                 查询
@@ -136,7 +139,7 @@ function CertificateResource(props) {
             </Stack>
           </Stack>
 
-          <RyTable columns={columns} dataSource={videoList ?? mockTableData} />
+          <RyTable columns={columns} dataSource={certificateList ?? mockTableData} />
         </Grid>
       </Grid>
     </MainCard>
