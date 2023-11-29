@@ -138,7 +138,7 @@ function CoursewareResource(props) {
             </Stack>
           </Stack>
 
-          <RyTable columns={columns} dataSource={coursewareList ?? mockTableData} />
+          <RyTable columns={columns} dataSource={coursewareList ?? mockTableData} pagination={{}} />
         </Grid>
       </Grid>
     </MainCard>

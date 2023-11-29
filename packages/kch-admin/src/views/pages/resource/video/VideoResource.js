@@ -136,7 +136,7 @@ function VideoResource(props) {
             </Stack>
           </Stack>
 
-          <RyTable columns={columns} dataSource={videoList ?? mockTableData} />
+          <RyTable columns={columns} dataSource={videoList ?? mockTableData} pagination={{}} />
         </Grid>
       </Grid>
     </MainCard>

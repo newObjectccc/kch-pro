@@ -138,7 +138,7 @@ function ImagesResource(props) {
             </Stack>
           </Stack>
 
-          <RyTable columns={columns} dataSource={imageList ?? mockTableData} />
+          <RyTable columns={columns} dataSource={imageList ?? mockTableData} pagination={{}} />
         </Grid>
       </Grid>
     </MainCard>

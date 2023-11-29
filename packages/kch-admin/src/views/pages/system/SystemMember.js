@@ -125,7 +125,7 @@ const SystemManagement = () => {
           重置
         </RyButton>
       </Stack>
-      <RyTable columns={columns} dataSource={data} />
+      <RyTable columns={columns} dataSource={data} pagination={{}} />
     </MainCard>
   );
 };

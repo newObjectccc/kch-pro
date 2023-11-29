@@ -1,4 +1,6 @@
+import Pagination from '@mui/material/Pagination';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -42,7 +44,18 @@ const CellComponent = (column, cIdx, row, rIdx, value) => {
   );
 };
 
-const RyTable = ({ columns, dataSource }) => {
+const PaginationComponent = ({ pagination }) => {
+  return (
+    <Stack direction="row" spacing={2} justifyContent="flex-end">
+      <Pagination defaultPage={1} boundaryCount={2} {...pagination} />
+    </Stack>
+  );
+};
+PaginationComponent.propTypes = {
+  pagination: PropTypes.object
+};
+
+const RyTable = ({ columns, dataSource, pagination }) => {
   if (!Array.isArray(columns) || columns?.length < 1)
     return console.warn('RyTable columns must be an array!');
   if (!Array.isArray(dataSource) || dataSource?.length < 1)
@@ -62,13 +75,15 @@ const RyTable = ({ columns, dataSource }) => {
           ))}
         </TableBody>
       </Table>
+      {pagination ? <PaginationComponent pagination={pagination} /> : null}
     </TableContainer>
   );
 };
 
 RyTable.propTypes = {
   columns: PropTypes.array,
-  dataSource: PropTypes.array
+  dataSource: PropTypes.array,
+  pagination: PropTypes.object
 };
 
 export default RyTable;

@@ -139,7 +139,11 @@ function CertificateResource(props) {
             </Stack>
           </Stack>
 
-          <RyTable columns={columns} dataSource={certificateList ?? mockTableData} />
+          <RyTable
+            columns={columns}
+            dataSource={certificateList ?? mockTableData}
+            pagination={{}}
+          />
         </Grid>
       </Grid>
     </MainCard>
