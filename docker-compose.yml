@@ -1,6 +1,6 @@
 version: '3'
 services:
-  cqbackend:
+  cqbackend1:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-backend:latest
     ports:
       - '3000:3000'
@@ -37,7 +37,7 @@ services:
     ports:
       - '80:80'
     depends_on:
-      - cqbackend
+      - cqbackend1
       - cqbackend2
       - cqbackend3
       - cqbackend4
