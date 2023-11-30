@@ -32,6 +32,10 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - cqapigateway
+      - cqbackend1
+      - cqbackend2
+      - cqbackend3
+      - cqbackend4
   cqapigateway:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
     ports:
