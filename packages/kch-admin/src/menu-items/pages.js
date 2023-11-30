@@ -37,6 +37,12 @@ const pages = {
           title: '分类管理',
           type: 'item',
           url: '/pages/category/index'
+        },
+        {
+          id: 'index0',
+          title: '分类管理Test',
+          type: 'item',
+          url: '/pages/category/indexTest'
         }
       ]
     },

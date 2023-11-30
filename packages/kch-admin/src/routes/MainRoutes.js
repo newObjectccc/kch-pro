@@ -6,6 +6,7 @@ import Loadable from 'ui-component/Loadable';
 
 // category routing
 const CategoryManagement = Loadable(lazy(() => import('views/pages/category/CategoryMain')));
+const CategoryManagementTest = Loadable(lazy(() => import('views/pages/categoryTest/CategoryMain')));
 // resource routing
 const ResourceManagement = Loadable(lazy(() => import('views/pages/resource/ResourceMain')));
 const VideoResourceManagement = Loadable(
@@ -62,7 +63,11 @@ const MainRoutes = {
         {
           path: 'index',
           element: <CategoryManagement />
-        }
+        },
+        {
+          path: 'indexTest',
+          element: <CategoryManagementTest />
+        },
       ]
     },
     {
