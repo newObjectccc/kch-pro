@@ -1,8 +1,11 @@
 import Axios from 'axios';
+const CancelToken = Axios.CancelToken;
+export const getCancelCtx = () => CancelToken.source();
 
 const BASEURL_ENV_MAP = {
   production: 'http://47.108.164.241/api',
-  development: 'http://129.28.157.168/api' // 'http://localhost/api'
+  // development: 'http://129.28.157.168/api'
+  development: 'http://localhost/api'
 };
 
 const axios = Axios.create({

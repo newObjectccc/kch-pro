@@ -1,5 +1,5 @@
-import axios from 'http';
-import { useMemo, useReducer } from 'react';
+import axios, { getCancelCtx } from 'http';
+import { useMemo, useReducer, useRef } from 'react';
 
 const ACTION_TYPE = {
   LOADING: 'loading',
@@ -27,27 +27,35 @@ const reducer = (state, action) => {
 
 export const useAxios = (options) => {
   const [state, dispatch] = useReducer(reducer, { error: null, loading: false, data: null });
+  const cancelCtx = useRef(null);
 
   const httpReq = async (params) => {
     let res = null;
     dispatch({ type: ACTION_TYPE.LOADING, value: true });
     try {
-      if (params) options = { ...options, ...normalizedParamsByMethod(options.method, params) };
+      const ctl = getCancelCtx();
+      cancelCtx.current = ctl;
+      if (params)
+        options = {
+          cancelToken: ctl.token,
+          ...options,
+          ...normalizedParamsByMethod(options.method, params)
+        };
       res = await axios.request(options);
     } catch (err) {
-      res = err.response.data ?? err;
+      res = err.response?.data ?? err;
     }
     dispatch({ type: ACTION_TYPE.LOADING, value: false });
-    if (res?.data?.code === '000') {
+    if (res.data?.code === '000')
       return dispatch({ type: ACTION_TYPE.DATA, value: res.data?.data });
-    }
     dispatch({ type: ACTION_TYPE.ERROR, value: res });
   };
 
   return {
     ...state,
     request: (orParams) => httpReq(orParams),
-    update: (val) => dispatch({ type: ACTION_TYPE.DATA, value: val })
+    update: (val) => dispatch({ type: ACTION_TYPE.DATA, value: val }),
+    cancel: (msg) => cancelCtx.current?.cancel(msg)
   };
 };
 
