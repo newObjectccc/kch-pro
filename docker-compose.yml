@@ -32,16 +32,15 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - cqapigateway
-      - cqbackend
-      - cqbackend2
-      - cqbackend3
-      - cqbackend4
   cqapigateway:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
     ports:
       - '80:80'
     depends_on:
       - cqbackend
+      - cqbackend2
+      - cqbackend3
+      - cqbackend4
   db:
     image: mysql:latest
     environment:

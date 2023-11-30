@@ -5,7 +5,7 @@ import { AuthService } from 'src/auth/auth.service';
 import NO_VERIFY_API from '../utils/noVerifyApi';
 import SIGN_API from '../utils/signApi';
 
-const serviceUrl = process.env.NODE_ENV !== 'production' ? 'localhost' : 'cqbackend';
+const serviceUrl = process.env.NODE_ENV !== 'production' ? 'localhost' : 'nginx';
 @Injectable()
 export class ProxyMiddleware implements NestMiddleware {
   constructor(private authService: AuthService) {}
