@@ -3,15 +3,14 @@
     <div class="cardFoot"></div>
   </div>
 </template>
-  
+
 <script setup lang="ts">
 interface Props {
-  fatherMessage?: string,
-  color?: string
-  width?: string
+  fatherMessage?: string;
+  color?: string;
+  width?: string;
 }
-defineProps<Props>()
-
+defineProps<Props>();
 </script>
 <style lang="scss" scoped>
 .progress {

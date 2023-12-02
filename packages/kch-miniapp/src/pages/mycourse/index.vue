@@ -67,8 +67,8 @@ const back = () => {
     justify-content: space-between;
     font-size: 32rpx;
     font-family: '黑体';
-    margin-top: 116rpx;
-    padding: 0 50rpx;
+    padding: 116rpx 50rpx 0 50rpx;
+    box-sizing: border-box;
 
     .vectorImg {
       width: 14rpx;
