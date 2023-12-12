@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsMobilePhone, IsNotEmpty, IsNumberString } from 'class-validator';
+import { IsMobilePhone, IsNotEmpty, IsNumberString, IsOptional } from 'class-validator';
 
 export class CreateToBuserDto {
   @ApiProperty({ default: '李超是母零' })
@@ -8,6 +8,7 @@ export class CreateToBuserDto {
 
   @ApiProperty({ default: '1' })
   @IsNumberString()
+  @IsOptional()
   pid: number;
 
   @ApiProperty({ default: '18199098808' })
