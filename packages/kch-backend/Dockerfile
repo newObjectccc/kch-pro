@@ -13,4 +13,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD ["pnpm", "-F", "kch-backend", "start:prod"]
+CMD ["npm", "run", "start:prod"]

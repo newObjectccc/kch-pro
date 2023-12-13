@@ -6,10 +6,11 @@ WORKDIR /app
 COPY . .
 
 USER root
-RUN npm install -g pnpm
-RUN pnpm install
+# RUN npm install -g pnpm
+# RUN pnpm install
+RUN npm install
 RUN npm run build
 
 EXPOSE 3001
 
-CMD ["pnpm", "-F", "kch-backend-api-gateway", "start:prod"]
+CMD ["npm", "run", "start:prod"]
