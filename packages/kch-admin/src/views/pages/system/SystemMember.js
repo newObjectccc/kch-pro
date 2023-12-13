@@ -36,7 +36,7 @@ const SystemManagement = () => {
   });
 
   if (loading) return <TotalGrowthBarChart />;
-  if (error) return <div>error</div>;
+  if (error) return <div>{data}</div>;
 
   const columns = [
     { title: 'ID', dataIndex: 'id' },
@@ -72,8 +72,15 @@ const SystemManagement = () => {
     setFormValues({ id: '', username: '', phoneNum: '' });
   };
 
+  const addAdministor = () => {
+
+  }
+
   return (
     <MainCard title="管理员设置">
+      <RyButton sx={{ mb: 2 }} variant="contained" onClick={addAdministor}>
+        新增管理员
+      </RyButton>
       <Stack direction="row" spacing={2} mb={2}>
         <RyInput
           error={Boolean(formValues.idErrorMsg)}
