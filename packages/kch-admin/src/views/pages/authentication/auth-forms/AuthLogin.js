@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
-const loginApi = generateAxiosHook('post', '/to-buser/login');
+const useLoginApi = generateAxiosHook('post', '/to-buser/login');
 
 const FirebaseLogin = ({ ...others }) => {
   const theme = useTheme();
@@ -42,7 +42,7 @@ const FirebaseLogin = ({ ...others }) => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { request } = loginApi();
+  const { request } = useLoginApi();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -76,10 +76,9 @@ const FirebaseLogin = ({ ...others }) => {
           try {
             setSubmitting(true);
             const res = await request({ phoneNum: values.username, password: values.password });
-            console.log(res);
-            if (res) {
-              res.token && localStorage.setItem('token', res.token);
-              delete res.token;
+            if (res?.token) {
+              localStorage.setItem('token', res.token);
+              delete res.token
               dispatch({ type: USER_LOGIN, value: res });
               setStatus({ success: true });
               setSubmitting(false);
