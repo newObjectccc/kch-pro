@@ -27,7 +27,7 @@ export const isValidArray = (arr) => {
 
 export const isEmptyObject = (obj) => {
   if (typeToString(obj) !== 'object') return false;
-  if (obj.toString() !== '{}') return false;
+  if (Reflect.ownKeys(obj).length === 0) return false;
   return true;
 };
 

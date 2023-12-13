@@ -46,8 +46,10 @@ export const useAxios = (options) => {
       res = err.response?.data ?? err;
     }
     dispatch({ type: ACTION_TYPE.LOADING, value: false });
-    if (res.data?.code === '000')
-      return dispatch({ type: ACTION_TYPE.DATA, value: res.data?.data });
+    if (res.data?.code === '000') {
+      dispatch({ type: ACTION_TYPE.DATA, value: res.data?.data });
+      return res.data?.data;
+    }
     dispatch({ type: ACTION_TYPE.ERROR, value: res });
   };
 
@@ -61,14 +63,14 @@ export const useAxios = (options) => {
 
 export const generateAxiosHook =
   (method, url, options = {}) =>
-  (params) => {
-    const allOpts = useMemo(() => {
-      const normalized = { method, url, ...options };
-      normalizedParamsByMethod(method, params);
-      return normalized;
-    }, [params]);
-    return useAxios(allOpts);
-  };
+    (params) => {
+      const allOpts = useMemo(() => {
+        const normalized = { method, url, ...options };
+        normalizedParamsByMethod(method, params);
+        return normalized;
+      }, [params]);
+      return useAxios(allOpts);
+    };
 
 const normalizedParamsByMethod = (method, params) => {
   let normalized = {};

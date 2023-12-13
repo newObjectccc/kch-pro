@@ -1,5 +1,7 @@
+import { generateAxiosHook } from 'hooks/useAxios';
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { USER_LOGIN } from 'store/actions';
 // material-ui
 import {
   Box,
@@ -28,13 +30,20 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useNavigate } from 'react-router';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
+
+const loginApi = generateAxiosHook('post', '/to-buser/login');
 
 const FirebaseLogin = ({ ...others }) => {
   const theme = useTheme();
   const [checked, setChecked] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { request } = loginApi();
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -64,11 +73,18 @@ const FirebaseLogin = ({ ...others }) => {
           password: Yup.string().min(6).max(24).required('密码必填')
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          setSubmitting(true);
-          console.log(values);
           try {
-            setStatus({ success: true });
-            setSubmitting(false);
+            setSubmitting(true);
+            const res = await request({ phoneNum: values.username, password: values.password });
+            console.log(res);
+            if (res) {
+              res.token && localStorage.setItem('token', res.token);
+              delete res.token;
+              dispatch({ type: USER_LOGIN, value: res });
+              setStatus({ success: true });
+              setSubmitting(false);
+              navigate('/');
+            }
           } catch (err) {
             setStatus({ success: false });
             setErrors({ submit: err.message });
