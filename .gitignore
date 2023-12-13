@@ -4,9 +4,9 @@
 .eslintcache
 
 # Enviroment
-.env.*
-.env
-packages/**/.env.*
+# .env.*
+# .env
+# packages/**/.env.*
 
 # compiled output
 dist
