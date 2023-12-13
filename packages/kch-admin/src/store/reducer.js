@@ -7,7 +7,7 @@ import userModule from './userModule';
 
 const reducer = combineReducers({
   customization: customizationReducer,
-  user: userModule
+  userModule
 });
 
 export default reducer;
