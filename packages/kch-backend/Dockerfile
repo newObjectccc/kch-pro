@@ -6,8 +6,9 @@ WORKDIR /app
 COPY . .
 
 USER root
-RUN npm install -g pnpm
-RUN pnpm install
+# RUN npm install -g pnpm
+# RUN pnpm install
+RUN npm install
 RUN npm run build
 
 EXPOSE 3000
