@@ -43,6 +43,7 @@ export const useAxios = (options) => {
         };
       res = await axios.request(options);
     } catch (err) {
+      console.error(err);
       res = err.response?.data ?? err;
     }
     dispatch({ type: ACTION_TYPE.LOADING, value: false });
