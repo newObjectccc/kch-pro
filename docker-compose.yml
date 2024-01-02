@@ -39,7 +39,7 @@ services:
   cqapigateway:
     image: registry.cn-chengdu.aliyuncs.com/gitee-docker/cq-apigateway:latest
     ports:
-      - '80:80'
+      - '443:443'
     depends_on:
       - cqbackend1
       - cqbackend2
