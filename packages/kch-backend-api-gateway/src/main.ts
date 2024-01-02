@@ -8,8 +8,8 @@ require('dotenv').config({
 });
 
 const httpsOptions = {
-  key: fs.readFileSync('../etc/rysyclub.com.key'),
-  cert: fs.readFileSync('../etc/rysyclub.com_bundle.crt')
+  key: fs.readFileSync('/etc/ssl/certs/etc/rysyclub.com.key'),
+  cert: fs.readFileSync('/etc/ssl/certs/etc/rysyclub.com_bundle.crt')
 };
 
 async function bootstrap() {
